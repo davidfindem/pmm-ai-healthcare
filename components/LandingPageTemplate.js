@@ -15,7 +15,7 @@ export default function LandingPageTemplate({ persona }) {
   const handleFormSubmit = async (e) => {
     e.preventDefault()
     
-    alert(`Thank you! Your information has been submitted. Our team will contact you within 24 hours to discuss your ${persona.title.toLowerCase()} staffing needs.`)
+    alert(`Thank you! Your information has been submitted. Our team will contact you within 24 hours to discuss your ${persona?.title?.toLowerCase() || 'staffing'} staffing needs.`)
     
     setFormData({
       firstName: '',
@@ -42,8 +42,8 @@ export default function LandingPageTemplate({ persona }) {
   return (
     <>
       <Head>
-        <title>{persona.title} Recruiting | Paychex Findem</title>
-        <meta name="description" content={persona.metaDescription} />
+        <title>{persona.title || 'Healthcare'} Recruiting | Paychex Findem</title>
+        <meta name="description" content={persona.metaDescription || 'Find qualified healthcare professionals'} />
       </Head>
 
       {/* Header */}
@@ -147,7 +147,7 @@ export default function LandingPageTemplate({ persona }) {
                 {persona.subtext || 'Connect with qualified professionals in your industry.'}
               </p>
               <button 
-                onClick={() => document.getElementById('signup').scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('signup')?.scrollIntoView({ behavior: 'smooth' })}
                 style={{
                   background: '#000',
                   color: 'white',
@@ -466,9 +466,9 @@ export default function LandingPageTemplate({ persona }) {
                 }}
               >
                 <option value="">{persona.selectPlaceholder || 'Select your hiring needs'}</option>
-                {persona.selectOptions?.map((option, index) => (
+                {(persona.selectOptions || []).map((option, index) => (
                   <option key={index} value={option.value}>{option.label}</option>
-                )) || []}
+                ))}
               </select>
             </div>
             
@@ -564,16 +564,16 @@ export default function LandingPageTemplate({ persona }) {
             maxWidth: '1000px',
             margin: '0 auto'
           }}>
-            {persona.pricing?.map((pricingPlan, index) => (
+            {(persona.pricing || []).map((pricingPlan, index) => (
               <PricingCard 
                 key={index}
-                title={pricingPlan.title}
-                price={pricingPlan.price}
-                description={pricingPlan.description}
-                features={pricingPlan.features}
-                featured={pricingPlan.featured}
+                title={pricingPlan?.title || 'Plan'}
+                price={pricingPlan?.price || '$0'}
+                description={pricingPlan?.description || 'Basic plan'}
+                features={pricingPlan?.features || []}
+                featured={pricingPlan?.featured || false}
               />
-            )) || []}
+            ))}
           </div>
         </div>
       </section>
@@ -581,15 +581,22 @@ export default function LandingPageTemplate({ persona }) {
   )
 }
 
-function PricingCard({ title, price, description, features = [], featured = false }) {
+function PricingCard({ title, price, description, features, featured }) {
+  // Ensure all props have defaults
+  const safeTitle = title || 'Plan'
+  const safePrice = price || '$0'
+  const safeDescription = description || 'Basic plan description'
+  const safeFeatures = Array.isArray(features) ? features : []
+  const safeFeatured = Boolean(featured)
+
   return (
     <div style={{ 
       background: 'white', 
       borderRadius: '16px',
       padding: '40px 32px',
       boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-      border: featured ? '2px solid #3b82f6' : 'none',
-      transform: featured ? 'scale(1.05)' : 'none'
+      border: safeFeatured ? '2px solid #3b82f6' : 'none',
+      transform: safeFeatured ? 'scale(1.05)' : 'none'
     }}>
       <div style={{ 
         display: 'flex',
@@ -620,7 +627,7 @@ function PricingCard({ title, price, description, features = [], featured = fals
             fontWeight: '600', 
             color: '#000',
             marginBottom: '4px'
-          }}>{title || 'Plan'}</h4>
+          }}>{safeTitle}</h4>
           <div style={{ 
             fontSize: '14px', 
             color: '#6b7280'
@@ -633,7 +640,7 @@ function PricingCard({ title, price, description, features = [], featured = fals
           fontSize: '48px', 
           fontWeight: '700', 
           color: '#000'
-        }}>{price || '$0'}</span>
+        }}>{safePrice}</span>
         <span style={{ 
           fontSize: '18px', 
           color: '#6b7280',
@@ -643,7 +650,7 @@ function PricingCard({ title, price, description, features = [], featured = fals
           fontSize: '15px', 
           color: '#6b7280',
           marginTop: '8px'
-        }}>{description || 'Basic plan description'}</div>
+        }}>{safeDescription}</div>
       </div>
       
       <button style={{ 
@@ -658,11 +665,11 @@ function PricingCard({ title, price, description, features = [], featured = fals
         cursor: 'pointer',
         marginBottom: '32px'
       }}>
-        Select {title || 'Plan'}
+        Select {safeTitle}
       </button>
       
       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-        {features.map((feature, index) => (
+        {safeFeatures.map((feature, index) => (
           <li key={index} style={{ 
             display: 'flex',
             alignItems: 'center',
@@ -686,7 +693,7 @@ function PricingCard({ title, price, description, features = [], featured = fals
             }}>
               ✓
             </div>
-            {feature}
+            {feature || 'Feature'}
           </li>
         ))}
       </ul>

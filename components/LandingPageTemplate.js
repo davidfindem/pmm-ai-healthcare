@@ -1,101 +1,99 @@
-import { useState } from 'react';
-import Head from 'next/head';
+import React from 'react';
 import Image from 'next/image';
 
 export default function LandingPageTemplate({ persona }) {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    companyName: '',
-    hiringNeeds: ''
-  });
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    alert(`Thank you! Your information has been submitted. Our team will contact you within 24 hours to discuss your ${persona?.title?.toLowerCase() || 'staffing'} staffing needs.`);
-    setFormData({ firstName: '', lastName: '', email: '', phone: '', companyName: '', hiringNeeds: '' });
-  };
-
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  if (!persona) return <div>Loading...</div>;
+  const {
+    headline,
+    subtext,
+    selectPlaceholder,
+    selectOptions,
+    ctaText,
+    formNote,
+    exampleCandidate,
+    pricingTitle,
+    pricing,
+  } = persona;
 
   return (
-    <>
-      <Head>
-        <title>{persona.title || 'Healthcare Staffing Solutions'}</title>
-        <meta name="description" content={persona.metaDescription || ''} />
-      </Head>
+    <main className="max-w-7xl mx-auto px-6 py-16 font-sans bg-white text-gray-900">
+      <header className="mb-12 border-b border-gray-200 pb-8">
+        <h1
+          className="text-5xl font-light leading-tight"
+          dangerouslySetInnerHTML={{ __html: headline }}
+        />
+        <p className="text-lg text-gray-600 mt-4 max-w-2xl">{subtext}</p>
+      </header>
 
-      <main style={{ fontFamily: 'sans-serif', maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
-        <h1 dangerouslySetInnerHTML={{ __html: persona.headline }} style={{ fontSize: '2.5rem', marginBottom: '1rem' }} />
-        <p style={{ fontSize: '1.2rem', color: '#444', marginBottom: '2rem' }}>{persona.subtext}</p>
-
-        <div style={{ display: 'flex', gap: '3rem', alignItems: 'flex-start' }}>
-          {/* LEFT COLUMN: Form + Pricing */}
-          <div style={{ flex: 2 }}>
-            <form onSubmit={handleFormSubmit} style={{ display: 'grid', gap: '1rem' }}>
-              <input name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleInputChange} />
-              <input name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleInputChange} />
-              <input name="email" placeholder="Email" value={formData.email} onChange={handleInputChange} />
-              <input name="phone" placeholder="Phone" value={formData.phone} onChange={handleInputChange} />
-              <input name="companyName" placeholder={persona.companyPlaceholder} value={formData.companyName} onChange={handleInputChange} />
-              <select name="hiringNeeds" value={formData.hiringNeeds} onChange={handleInputChange}>
-                <option value="">{persona.selectPlaceholder}</option>
-                {persona.selectOptions?.map(option => (
-                  <option key={option.value} value={option.value}>{option.label}</option>
-                ))}
-              </select>
-              <button type="submit" style={{ padding: '0.75rem', fontSize: '1rem' }}>{persona.ctaText}</button>
-            </form>
-
-            <p style={{ marginTop: '1rem', fontStyle: 'italic', color: '#555' }}>{persona.formNote}</p>
-
-            <section style={{ marginTop: '3rem' }}>
-              <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{persona.pricingTitle || 'Pricing Plans'}</h2>
-              {Array.isArray(persona.pricing) && persona.pricing.map((plan) => (
-                <div key={plan.title} style={{
-                  border: '1px solid #ccc',
-                  borderRadius: '8px',
-                  padding: '1.5rem',
-                  marginBottom: '1.5rem',
-                  background: '#fff'
-                }}>
-                  <h3>{plan.title}</h3>
-                  <p style={{ margin: '0.5rem 0' }}><strong>{plan.price}</strong> — {plan.description}</p>
-                  <ul>
-                    {plan.features.map((feature, i) => (
-                      <li key={i}>{feature}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </section>
+      <section className="grid lg:grid-cols-[2fr_1fr] gap-12 items-start">
+        {/* Form Section */}
+        <form className="space-y-5">
+          <div className="grid sm:grid-cols-2 gap-4">
+            <input className="border border-gray-300 rounded-md px-4 py-3 w-full text-sm" placeholder="First Name" />
+            <input className="border border-gray-300 rounded-md px-4 py-3 w-full text-sm" placeholder="Last Name" />
           </div>
+          <input className="border border-gray-300 rounded-md px-4 py-3 w-full text-sm" placeholder="Email" />
+          <input className="border border-gray-300 rounded-md px-4 py-3 w-full text-sm" placeholder="Phone" />
+          <input className="border border-gray-300 rounded-md px-4 py-3 w-full text-sm" placeholder={persona.companyPlaceholder} />
 
-          {/* RIGHT COLUMN: Candidate Card */}
-          <div style={{ flex: 1, padding: '1rem', background: '#f5f5f5', borderRadius: '10px', textAlign: 'center' }}>
-            <Image
-              src={persona.exampleCandidate.image || '/images/default.jpg'}
-              alt={persona.exampleCandidate.name}
-              width={200}
-              height={200}
-              style={{ borderRadius: '50%', objectFit: 'cover' }}
-            />
-            <h3 style={{ marginTop: '1rem' }}>{persona.exampleCandidate.name}</h3>
-            <p style={{ fontWeight: 'bold', margin: 0 }}>{persona.exampleCandidate.role}</p>
-            <p style={{ color: '#777', margin: '0.5rem 0' }}>{persona.exampleCandidate.location}</p>
-            <p style={{ fontSize: '0.95rem', lineHeight: 1.4 }}>{persona.exampleCandidate.bio}</p>
+          <select className="border border-gray-300 rounded-md px-4 py-3 w-full text-sm text-gray-700">
+            <option>{selectPlaceholder}</option>
+            {selectOptions.map((opt) => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-3 rounded-md text-base font-semibold shadow-md hover:bg-blue-700 transition"
+          >
+            {ctaText}
+          </button>
+          <p className="text-xs italic text-gray-500">{formNote}</p>
+        </form>
+
+        {/* Candidate Card */}
+        <div className="bg-gray-50 p-6 rounded-xl shadow-sm text-center">
+          {exampleCandidate.image && (
+            <div className="w-32 h-32 mx-auto relative mb-4">
+              <Image
+                src={exampleCandidate.image}
+                alt={exampleCandidate.name}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-full"
+              />
+            </div>
+          )}
+          <h3 className="text-xl font-semibold text-gray-800">{exampleCandidate.name}</h3>
+          <p className="text-gray-700 font-medium text-sm">{exampleCandidate.role}</p>
+          <p className="text-gray-400 text-xs mb-3">{exampleCandidate.location}</p>
+          <div className="text-left mt-4">
+            <h4 className="text-sm font-semibold mb-1 text-gray-800">About {exampleCandidate.name.split(' ')[0]}:</h4>
+            <p className="text-sm text-gray-700 leading-relaxed">{exampleCandidate.bio}</p>
           </div>
         </div>
-      </main>
-    </>
+      </section>
+
+      <section className="mt-20">
+        <h2 className="text-3xl font-medium mb-8">{pricingTitle}</h2>
+        <div className="grid sm:grid-cols-2 gap-8">
+          {pricing.map((tier) => (
+            <div
+              key={tier.title}
+              className="border border-gray-200 rounded-xl p-6 bg-white shadow hover:shadow-md transition"
+            >
+              <h3 className="text-xl font-bold mb-2 text-gray-800">{tier.title}</h3>
+              <p className="text-lg font-semibold text-blue-600 mb-1">{tier.price}</p>
+              <p className="text-sm text-gray-500 mb-4">{tier.description}</p>
+              <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                {tier.features.map((f) => (
+                  <li key={f}>{f}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }

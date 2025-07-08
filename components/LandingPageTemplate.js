@@ -501,7 +501,7 @@ export default function LandingPageTemplate({ persona }) {
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* Simplified Pricing Section - TEMPORARILY REMOVED PRICING CARDS */}
       <section id="pricing" style={{ background: '#f9fafb', padding: '100px 0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
           <div style={{ textAlign: 'center', marginBottom: '80px' }}>
@@ -557,146 +557,32 @@ export default function LandingPageTemplate({ persona }) {
             </div>
           </div>
 
+          {/* TEMPORARILY SHOW SIMPLE TEXT INSTEAD OF PRICING CARDS */}
           <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(3, 1fr)', 
-            gap: '32px',
-            maxWidth: '1000px',
-            margin: '0 auto'
+            textAlign: 'center',
+            background: 'white',
+            padding: '60px',
+            borderRadius: '16px',
+            boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
           }}>
-            {(persona.pricing || []).map((pricingPlan, index) => (
-              <PricingCard 
-                key={index}
-                title={pricingPlan?.title || 'Plan'}
-                price={pricingPlan?.price || '$0'}
-                description={pricingPlan?.description || 'Basic plan'}
-                features={pricingPlan?.features || []}
-                featured={pricingPlan?.featured || false}
-              />
-            ))}
+            <h3 style={{ fontSize: '24px', marginBottom: '16px' }}>Pricing plans coming soon</h3>
+            <p style={{ color: '#6b7280', fontSize: '16px' }}>Contact us for custom pricing based on your needs.</p>
+            <button style={{
+              background: '#000',
+              color: 'white',
+              padding: '16px 32px',
+              border: 'none',
+              borderRadius: '12px',
+              fontSize: '16px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              marginTop: '24px'
+            }}>
+              Contact Sales
+            </button>
           </div>
         </div>
       </section>
     </>
-  )
-}
-
-function PricingCard({ title, price, description, features, featured }) {
-  // Ensure all props have defaults
-  const safeTitle = title || 'Plan'
-  const safePrice = price || '$0'
-  const safeDescription = description || 'Basic plan description'
-  const safeFeatures = Array.isArray(features) ? features : []
-  const safeFeatured = Boolean(featured)
-
-  return (
-    <div style={{ 
-      background: 'white', 
-      borderRadius: '16px',
-      padding: '40px 32px',
-      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-      border: safeFeatured ? '2px solid #3b82f6' : 'none',
-      transform: safeFeatured ? 'scale(1.05)' : 'none'
-    }}>
-      <div style={{ 
-        display: 'flex',
-        alignItems: 'center',
-        gap: '16px',
-        marginBottom: '24px'
-      }}>
-        <div style={{ 
-          width: '40px',
-          height: '40px',
-          background: '#dbeafe',
-          borderRadius: '12px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexShrink: 0
-        }}>
-          <div style={{ 
-            width: '16px',
-            height: '16px',
-            background: '#3b82f6',
-            borderRadius: '4px'
-          }}></div>
-        </div>
-        <div>
-          <h4 style={{ 
-            fontSize: '20px', 
-            fontWeight: '600', 
-            color: '#000',
-            marginBottom: '4px'
-          }}>{safeTitle}</h4>
-          <div style={{ 
-            fontSize: '14px', 
-            color: '#6b7280'
-          }}>Monthly only</div>
-        </div>
-      </div>
-      
-      <div style={{ marginBottom: '32px' }}>
-        <span style={{ 
-          fontSize: '48px', 
-          fontWeight: '700', 
-          color: '#000'
-        }}>{safePrice}</span>
-        <span style={{ 
-          fontSize: '18px', 
-          color: '#6b7280',
-          marginLeft: '4px'
-        }}>per month</span>
-        <div style={{ 
-          fontSize: '15px', 
-          color: '#6b7280',
-          marginTop: '8px'
-        }}>{safeDescription}</div>
-      </div>
-      
-      <button style={{ 
-        width: '100%',
-        background: '#000',
-        color: 'white',
-        padding: '16px',
-        border: 'none',
-        borderRadius: '12px',
-        fontSize: '16px',
-        fontWeight: '600',
-        cursor: 'pointer',
-        marginBottom: '32px'
-      }}>
-        Select {safeTitle}
-      </button>
-      
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-        {safeFeatures.map((feature, index) => (
-          <li key={index} style={{ 
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: '16px',
-            fontSize: '15px',
-            color: '#6b7280'
-          }}>
-            <div style={{ 
-              width: '20px', 
-              height: '20px', 
-              background: '#10b981', 
-              borderRadius: '50%',
-              marginRight: '12px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'white',
-              fontSize: '12px',
-              fontWeight: '600',
-              flexShrink: 0
-            }}>
-              ✓
-            </div>
-            {feature || 'Feature'}
-          </li>
-        ))}
-      </ul>
-    </div>
   )
 }

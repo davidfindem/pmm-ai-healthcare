@@ -36,7 +36,7 @@ const personas = {
       bio: "Sarah has 8+ years of experience supporting individuals with trauma and substance use recovery. She specializes in CBT and trauma-informed therapy, working across both outpatient and residential settings."
     }
   },
-  
+
   "rural-nursing-home": {
     title: "Rural Nursing Home Staffing",
     metaDescription: "Staff your rural nursing home with compassionate CNAs and RNs.",

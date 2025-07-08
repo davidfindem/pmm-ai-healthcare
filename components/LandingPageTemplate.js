@@ -16,7 +16,7 @@ export default function LandingPageTemplate({ persona }) {
     e.preventDefault()
     
     const score = Math.floor(Math.random() * 10) + 15
-    alert(`Demo: Lead captured for ${persona.title}! Score: ${score} points. Email sequence triggered.`)
+    alert(`Thank you! Your information has been submitted. Our team will contact you within 24 hours to discuss your ${persona.title.toLowerCase()} staffing needs.`)
     
     setFormData({
       firstName: '',
@@ -133,12 +133,13 @@ export default function LandingPageTemplate({ persona }) {
               </button>
             </div>
 
-            {/* Right Side - Candidate Card */}
+              {/* Right Side - Candidate Card */}
             <div style={{ 
               background: 'white', 
               borderRadius: '16px', 
               padding: '2rem',
-              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+              maxWidth: '440px'
             }}>
               {/* Candidate Header */}
               <div style={{ 
@@ -147,35 +148,36 @@ export default function LandingPageTemplate({ persona }) {
                 alignItems: 'flex-start',
                 marginBottom: '2rem'
               }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', flex: 1 }}>
                   <img 
                     src={persona.candidate.photo}
-                    alt={persona.candidate.name}
-                    style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover' }}
+                    alt={persona.candidate.name.replace(/<br\/>/g, ' ')}
+                    style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
                   />
-                  <div>
+                  <div style={{ flex: 1 }}>
                     <h3 style={{ 
                       fontSize: '1.75rem', 
                       fontWeight: 'bold', 
-                      lineHeight: '1.1',
+                      lineHeight: '1.2',
                       marginBottom: '0.5rem',
                       color: '#111827'
                     }} dangerouslySetInnerHTML={{ __html: persona.candidate.name }}>
                     </h3>
-                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', marginBottom: '1rem' }}>
                       <div style={{ 
                         width: '8px', 
                         height: '8px', 
                         background: '#10b981', 
                         borderRadius: '50%',
-                        marginTop: '6px'
+                        marginTop: '6px',
+                        flexShrink: 0
                       }}></div>
                       <span style={{ color: '#6b7280', fontSize: '1rem', lineHeight: '1.3' }} dangerouslySetInnerHTML={{ __html: persona.candidate.title }}>
                       </span>
                     </div>
                   </div>
                 </div>
-                <div style={{ display: 'flex', gap: '8px' }}>
+                <div style={{ display: 'flex', gap: '8px', flexShrink: 0, marginLeft: '1rem' }}>
                   <button style={{ 
                     background: '#3b82f6', 
                     color: 'white', 
@@ -183,7 +185,8 @@ export default function LandingPageTemplate({ persona }) {
                     border: 'none', 
                     borderRadius: '8px', 
                     fontSize: '14px',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    whiteSpace: 'nowrap'
                   }}>Email</button>
                   <button style={{ 
                     background: '#3b82f6', 
@@ -192,7 +195,8 @@ export default function LandingPageTemplate({ persona }) {
                     border: 'none', 
                     borderRadius: '8px', 
                     fontSize: '14px',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    whiteSpace: 'nowrap'
                   }}>Call</button>
                 </div>
               </div>
@@ -232,14 +236,17 @@ export default function LandingPageTemplate({ persona }) {
                     height: '48px', 
                     background: persona.candidate.iconColor, 
                     borderRadius: '8px',
-                    marginTop: '4px'
+                    marginTop: '4px',
+                    flexShrink: 0
                   }}></div>
-                  <div style={{ flex: 1 }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ 
                       display: 'flex', 
                       justifyContent: 'space-between', 
                       alignItems: 'flex-start',
-                      marginBottom: '4px'
+                      marginBottom: '4px',
+                      flexWrap: 'wrap',
+                      gap: '8px'
                     }}>
                       <span style={{ 
                         fontSize: '0.875rem', 
@@ -248,7 +255,8 @@ export default function LandingPageTemplate({ persona }) {
                       }}>{persona.candidate.experience.title}</span>
                       <span style={{ 
                         fontSize: '0.75rem', 
-                        color: '#9ca3af'
+                        color: '#9ca3af',
+                        whiteSpace: 'nowrap'
                       }}>{persona.candidate.experience.duration}</span>
                     </div>
                     <div style={{ 
@@ -436,6 +444,83 @@ export default function LandingPageTemplate({ persona }) {
               {persona.formNote}
             </p>
           </form>
+        </div>
+      </section>
+
+      {/* Performance Analytics Section */}
+      <section style={{ background: '#f8f9fa', padding: '4rem 1rem', borderTop: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 style={{ 
+              fontSize: '2rem', 
+              fontWeight: 'bold', 
+              marginBottom: '1rem',
+              color: '#111827'
+            }}>
+              Platform Performance
+            </h2>
+            <p style={{ color: '#6b7280', fontSize: '1.125rem' }}>
+              Real-time insights from our healthcare recruiting platform
+            </p>
+          </div>
+          
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(4, 1fr)', 
+            gap: '2rem'
+          }}>
+            <div style={{ 
+              background: 'white', 
+              padding: '2rem', 
+              borderRadius: '12px',
+              textAlign: 'center',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+            }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#2563eb', marginBottom: '0.5rem' }}>
+                {Math.floor(Math.random() * 15) + 35}
+              </div>
+              <div style={{ color: '#6b7280', fontSize: '0.9rem' }}>Active Searches Today</div>
+            </div>
+            
+            <div style={{ 
+              background: 'white', 
+              padding: '2rem', 
+              borderRadius: '12px',
+              textAlign: 'center',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+            }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#10b981', marginBottom: '0.5rem' }}>
+                {Math.floor(Math.random() * 10) + 22}
+              </div>
+              <div style={{ color: '#6b7280', fontSize: '0.9rem' }}>Avg. Lead Score</div>
+            </div>
+            
+            <div style={{ 
+              background: 'white', 
+              padding: '2rem', 
+              borderRadius: '12px',
+              textAlign: 'center',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+            }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#f59e0b', marginBottom: '0.5rem' }}>
+                {Math.floor(Math.random() * 20) + 165}
+              </div>
+              <div style={{ color: '#6b7280', fontSize: '0.9rem' }}>Emails Sent Today</div>
+            </div>
+            
+            <div style={{ 
+              background: 'white', 
+              padding: '2rem', 
+              borderRadius: '12px',
+              textAlign: 'center',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+            }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#8b5cf6', marginBottom: '0.5rem' }}>
+                {Math.floor(Math.random() * 5) + 67}%
+              </div>
+              <div style={{ color: '#6b7280', fontSize: '0.9rem' }}>Response Rate</div>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -5,7 +5,6 @@ export default function Home() {
   const [stats, setStats] = useState({ leads: 0, score: 0, emails: 0 })
 
   useEffect(() => {
-    // Simulate live demo stats
     const updateStats = () => {
       setStats({
         leads: Math.floor(Math.random() * 10) + 25,
@@ -53,6 +52,13 @@ export default function Home() {
       icon: '🧠',
       color: '#8b5cf6',
       href: '/mental-health'
+    },
+    {
+      title: 'Senior Living Communities',
+      description: 'Caregivers and activity coordinators',
+      icon: '🏠',
+      color: '#06b6d4',
+      href: '/senior-living'
     }
   ]
 
@@ -89,11 +95,11 @@ export default function Home() {
             </div>
             <div>
               <h1 style={{ fontSize: '20px', fontWeight: 'bold', margin: 0 }}>PMM AI Healthcare Recruiting</h1>
-              <p style={{ fontSize: '14px', color: '#6b7280', margin: 0 }}>Live Demo Prototype</p>
+              <p style={{ fontSize: '14px', color: '#6b7280', margin: 0 }}>Live Prototype</p>
             </div>
           </div>
           <button 
-            onClick={() => alert(`Admin Dashboard:\n\nTotal Leads: ${stats.leads}\nAverage Score: ${stats.score}\nEmails Sent: ${stats.emails}\n\nLead Scoring Rules:\n• Page visit: +1 point\n• Form submit: +15 points\n• Email open: +5 points\n• Return visit: +3 points\n\nThis demo shows how AI automates:\n• Landing page creation for each persona\n• Real-time lead scoring\n• Automated email sequences\n• Performance analytics`)}
+            onClick={() => alert(`Platform Analytics:\n\nTotal Active Searches: ${stats.leads}\nAverage Lead Score: ${stats.score}\nAutomated Emails Sent: ${stats.emails}\n\nLead Scoring System:\n• Page visit: +1 point\n• Form submission: +15 points\n• Email interaction: +5 points\n• Return visits: +3 points\n\nEmail Automation:\n• Welcome sequence triggered on signup\n• Follow-up based on engagement\n• Persona-specific messaging\n• Automated lead handoff at score thresholds`)}
             style={{
               background: '#1f2937',
               color: 'white',
@@ -104,7 +110,7 @@ export default function Home() {
               fontSize: '14px'
             }}
           >
-            Admin Dashboard
+            Platform Analytics
           </button>
         </div>
       </header>
@@ -130,8 +136,8 @@ export default function Home() {
             maxWidth: '800px',
             margin: '0 auto 3rem auto'
           }}>
-            Live demo showing how AI generates targeted landing pages for 5 healthcare personas, 
-            tracks leads in real-time, and triggers automated email sequences.
+            Automated product marketing system generating targeted landing pages for healthcare personas, 
+            with real-time lead scoring and triggered email sequences.
           </p>
 
           {/* Live Stats */}
@@ -149,7 +155,7 @@ export default function Home() {
               boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
             }}>
               <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#2563eb' }}>{stats.leads}</div>
-              <div style={{ color: '#6b7280' }}>Demo Leads</div>
+              <div style={{ color: '#6b7280' }}>Active Searches</div>
             </div>
             <div style={{ 
               background: 'white', 
@@ -158,7 +164,7 @@ export default function Home() {
               boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
             }}>
               <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#10b981' }}>{stats.score}</div>
-              <div style={{ color: '#6b7280' }}>Avg Score</div>
+              <div style={{ color: '#6b7280' }}>Avg Lead Score</div>
             </div>
             <div style={{ 
               background: 'white', 
@@ -167,26 +173,8 @@ export default function Home() {
               boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
             }}>
               <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#8b5cf6' }}>{stats.emails}</div>
-              <div style={{ color: '#6b7280' }}>Emails Sent</div>
+              <div style={{ color: '#6b7280' }}>Automated Emails</div>
             </div>
-          </div>
-
-          <div style={{ 
-            background: '#dbeafe', 
-            border: '2px solid #93c5fd',
-            borderRadius: '12px',
-            padding: '1.5rem',
-            marginBottom: '4rem',
-            maxWidth: '800px',
-            margin: '0 auto 4rem auto'
-          }}>
-            <h3 style={{ color: '#1e40af', fontSize: '1.125rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
-              🎯 Click any persona below to see a full landing page
-            </h3>
-            <p style={{ color: '#1e40af', fontSize: '0.875rem', margin: 0 }}>
-              Each page demonstrates AI-generated content, lead scoring, and email automation 
-              specifically tailored to that healthcare persona.
-            </p>
           </div>
         </div>
       </section>
@@ -201,14 +189,13 @@ export default function Home() {
             marginBottom: '3rem',
             color: '#111827'
           }}>
-            5 Healthcare Recruiting Personas
+            6 Healthcare Recruiting Personas
           </h2>
           
           <div style={{ 
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-            gap: '2rem',
-            marginBottom: '3rem'
+            gap: '2rem'
           }}>
             {personas.map((persona, index) => (
               <Link key={index} href={persona.href} style={{ textDecoration: 'none' }}>
@@ -270,56 +257,6 @@ export default function Home() {
                 </div>
               </Link>
             ))}
-          </div>
-
-          {/* Demo Features */}
-          <div style={{ 
-            background: '#f9fafb',
-            borderRadius: '16px',
-            padding: '3rem',
-            textAlign: 'center'
-          }}>
-            <h3 style={{ 
-              fontSize: '1.5rem', 
-              fontWeight: 'bold', 
-              marginBottom: '2rem',
-              color: '#111827'
-            }}>
-              What Each Landing Page Demonstrates
-            </h3>
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
-              gap: '2rem'
-            }}>
-              <div>
-                <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🎯</div>
-                <h4 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: '#111827' }}>
-                  Targeted Messaging
-                </h4>
-                <p style={{ color: '#6b7280', fontSize: '0.875rem' }}>
-                  AI-generated headlines, copy, and candidate profiles specific to each healthcare setting
-                </p>
-              </div>
-              <div>
-                <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>📊</div>
-                <h4 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: '#111827' }}>
-                  Lead Scoring
-                </h4>
-                <p style={{ color: '#6b7280', fontSize: '0.875rem' }}>
-                  Real-time scoring based on user actions, form submissions, and engagement
-                </p>
-              </div>
-              <div>
-                <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>✉️</div>
-                <h4 style={{ fontWeight: 'bold', marginBottom: '0.5rem', color: '#111827' }}>
-                  Email Automation
-                </h4>
-                <p style={{ color: '#6b7280', fontSize: '0.875rem' }}>
-                  Triggered email sequences customized for each persona and lead behavior
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>

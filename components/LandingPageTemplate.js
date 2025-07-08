@@ -63,25 +63,24 @@ export default function LandingPageTemplate({ persona }) {
 
         <div style={{ marginTop: '2rem' }}>
           <h2>{persona.pricingTitle || 'Pricing'}</h2>
-
-          {Array.isArray(persona.pricing) && persona.pricing.map((plan) => (
-            <div key={plan.title} style={{ 
-              border: '1px solid #ccc', 
-              borderRadius: '8px', 
-              padding: '1rem', 
-              marginBottom: '1rem' 
-            }}>
-              <h3>{plan.title}</h3>
-              <p><strong>{plan.price}</strong> — {plan.description}</p>
-              <ul>
-                {plan.features.map((feature, i) => (
-                  <li key={i}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-          {!Array.isArray(persona.pricing) && (
+          {Array.isArray(persona.pricing) ? (
+            persona.pricing.map((plan) => (
+              <div key={plan.title} style={{
+                border: '1px solid #ccc',
+                borderRadius: '8px',
+                padding: '1rem',
+                marginBottom: '1rem'
+              }}>
+                <h3>{plan.title}</h3>
+                <p><strong>{plan.price}</strong> — {plan.description}</p>
+                <ul>
+                  {plan.features.map((feature, i) => (
+                    <li key={i}>{feature}</li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          ) : (
             <p>No pricing plans available.</p>
           )}
         </div>

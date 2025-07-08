@@ -2,15 +2,11 @@ import { useRouter } from 'next/router'
 import LandingPageTemplate from '../components/LandingPageTemplate'
 import { personas } from '../data/personas'
 
-export default function PersonaPage() {
+export default function PersonaPage({ persona: personaData }) {
   const router = useRouter()
-  const { persona } = router.query
   
-  // Get persona data
-  const personaData = personas[persona]
-  
-  // Handle invalid persona
-  if (!personaData) {
+  // If we're in fallback mode or persona data is missing, show loading
+  if (router.isFallback || !personaData) {
     return (
       <div style={{ 
         display: 'flex', 
@@ -20,22 +16,7 @@ export default function PersonaPage() {
         fontFamily: 'system-ui, sans-serif'
       }}>
         <div style={{ textAlign: 'center' }}>
-          <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Persona Not Found</h1>
-          <p style={{ color: '#6b7280', marginBottom: '2rem' }}>
-            The persona "{persona}" doesn't exist.
-          </p>
-          <a 
-            href="/" 
-            style={{ 
-              background: '#000', 
-              color: 'white', 
-              padding: '12px 24px', 
-              borderRadius: '8px', 
-              textDecoration: 'none' 
-            }}
-          >
-            Back to Homepage
-          </a>
+          <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Loading...</h1>
         </div>
       </div>
     )

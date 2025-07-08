@@ -1,14 +1,21 @@
-import { useRouter } from 'next/router';
-import LandingPageTemplate from '../components/LandingPageTemplate';
-import personas from '../data/personas';
+import personas from "../data/personas";
+import LandingPageTemplate from "../components/LandingPageTemplate";
 
-export default function PersonaPage() {
-  const router = useRouter();
-  const { persona } = router.query;
+export default function PersonaPage({ persona }) {
+  if (!persona) return <div>Persona not found</div>;
+  return <LandingPageTemplate persona={persona} />;
+}
 
-  const personaData = persona ? personas[persona] : null;
+export async function getStaticPaths() {
+  const paths = Object.keys(personas).map((key) => ({ params: { persona: key } }));
+  return { paths, fallback: false };
+}
 
-  if (!personaData) return <div>Loading...</div>;
-
-  return <LandingPageTemplate persona={personaData} />;
+export async function getStaticProps({ params }) {
+  const persona = personas[params.persona] || null;
+  return {
+    props: {
+      persona
+    }
+  };
 }

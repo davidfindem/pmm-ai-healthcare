@@ -277,5 +277,61 @@ export const personas = {
         featured: false
       }
     ]
+  },
+
+  'senior-living': {
+    title: 'Senior Living',
+    metaDescription: 'Find certified caregivers and activity coordinators for senior living communities',
+    backgroundColor: '#f0f8ff',
+    headline: 'Build your <em>senior living</em> dream team',
+    subtext: 'Find compassionate caregivers, activity coordinators, and support staff who understand the unique needs of senior living communities. Connect with professionals dedicated to enhancing quality of life for residents.',
+    ctaText: 'Find caregivers now',
+    formTitle: 'Start building your senior living team today',
+    companyPlaceholder: 'Senior Living Community Name',
+    selectPlaceholder: 'How many caregivers do you need?',
+    selectOptions: [
+      { value: '1-3', label: '1-3 Caregivers' },
+      { value: '4-8', label: '4-8 Caregivers' },
+      { value: '9-15', label: '9-15 Care Staff' },
+      { value: 'mixed', label: 'Caregivers + Activity Staff + Support' }
+    ],
+    formNote: 'No credit card required. Start finding quality caregivers in 5 minutes.',
+    pricingTitle: 'Simple pricing for senior living communities',
+    candidate: {
+      name: 'Patricia<br/>Williams',
+      title: 'Certified<br/>Personal Care<br/>Assistant',
+      photo: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=128&q=80',
+      bio: 'Certified Personal Care Assistant with 9+ years in senior living and memory care. Specialized in dementia care, medication management, and activities of daily living. Passionate about creating meaningful connections with residents.',
+      iconColor: '#e0f2fe',
+      experience: {
+        title: 'Certified Personal Care Assistant',
+        duration: 'Sep 2015 - Present (9 years)',
+        company: 'Golden Years Senior Living, Metro Area',
+        description: 'Provided personalized care for 15+ residents including assistance with daily living activities, medication reminders, and social engagement. Maintained 100% family satisfaction rating and received Excellence in Care award three consecutive years.'
+      }
+    },
+    pricing: [
+      {
+        title: 'Essentials',
+        price: '$179',
+        description: 'Perfect for assisted living facilities',
+        features: ['Contact up to 60 caregivers/month', 'Email integration', 'Basic reporting'],
+        featured: false
+      },
+      {
+        title: 'Enhanced',
+        price: '$349',
+        description: 'Great for full-service communities',
+        features: ['Contact up to 180 caregivers/month', 'Advanced analytics', 'Priority support'],
+        featured: true
+      },
+      {
+        title: 'Premium',
+        price: '$649',
+        description: 'Built for senior living networks',
+        features: ['Contact up to 400 caregivers/month', 'Care management integration', 'Dedicated support'],
+        featured: false
+      }
+    ]
   }
 }

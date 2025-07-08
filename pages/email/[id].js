@@ -1,13 +1,15 @@
-
 import { useRouter } from 'next/router';
 import personas from '../../data/personas';
 
 export default function EmailView() {
   const router = useRouter();
   const { id } = router.query;
-  const persona = personas[id];
 
-  if (!persona) return <div>Loading...</div>;
+  const persona = id ? personas[id] : null;
+
+  if (!persona) {
+    return <div>Loading or invalid persona...</div>;
+  }
 
   return (
     <div style={{ padding: 40 }}>
@@ -22,4 +24,3 @@ export default function EmailView() {
     </div>
   );
 }
-

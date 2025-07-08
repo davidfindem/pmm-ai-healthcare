@@ -95,7 +95,7 @@ export default function Home() {
             </div>
             <div>
               <h1 style={{ fontSize: '20px', fontWeight: 'bold', margin: 0 }}>PMM AI Healthcare Recruiting</h1>
-              <p style={{ fontSize: '14px', color: '#6b7280', margin: 0 }}>Live Prototype</p>
+              <p style={{ fontSize: '14px', color: '#6b7280', margin: 0 }}>Live System v2</p>
             </div>
           </div>
           <button 

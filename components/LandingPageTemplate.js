@@ -34,6 +34,11 @@ export default function LandingPageTemplate({ persona }) {
     })
   }
 
+  // Add safety checks for persona data
+  if (!persona) {
+    return <div>Loading...</div>
+  }
+
   return (
     <>
       <Head>
@@ -110,7 +115,7 @@ export default function LandingPageTemplate({ persona }) {
 
       {/* Hero Section */}
       <section style={{ 
-        background: persona.backgroundColor,
+        background: persona.backgroundColor || '#f9fafb',
         padding: '80px 0',
         minHeight: '600px'
       }}>
@@ -130,7 +135,7 @@ export default function LandingPageTemplate({ persona }) {
                 lineHeight: '0.9',
                 color: '#000',
                 marginBottom: '32px'
-              }} dangerouslySetInnerHTML={{ __html: persona.headline }}>
+              }} dangerouslySetInnerHTML={{ __html: persona.headline || 'Find Top Talent' }}>
               </h1>
               <p style={{ 
                 fontSize: '18px', 
@@ -139,7 +144,7 @@ export default function LandingPageTemplate({ persona }) {
                 marginBottom: '48px',
                 maxWidth: '500px'
               }}>
-                {persona.subtext}
+                {persona.subtext || 'Connect with qualified professionals in your industry.'}
               </p>
               <button 
                 onClick={() => document.getElementById('signup').scrollIntoView({ behavior: 'smooth' })}
@@ -156,165 +161,169 @@ export default function LandingPageTemplate({ persona }) {
                   display: 'inline-block'
                 }}
               >
-                {persona.ctaText}
+                {persona.ctaText || 'Get Started'}
               </button>
             </div>
 
             {/* Right Side - Candidate Card */}
-            <div style={{ 
-              background: 'white', 
-              borderRadius: '16px', 
-              padding: '32px',
-              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-              width: '440px',
-              position: 'relative'
-            }}>
-              {/* Candidate Header */}
+            {persona.candidate && (
               <div style={{ 
-                display: 'flex', 
-                justifyContent: 'space-between', 
-                alignItems: 'flex-start',
-                marginBottom: '32px'
+                background: 'white', 
+                borderRadius: '16px', 
+                padding: '32px',
+                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                width: '440px',
+                position: 'relative'
               }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', flex: 1 }}>
-                  <img 
-                    src={persona.candidate.photo}
-                    alt={persona.candidate.name.replace(/<br\/>/g, ' ')}
-                    style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
-                  />
-                  <div style={{ flex: 1 }}>
-                    <div style={{ 
-                      fontSize: '28px', 
+                {/* Candidate Header */}
+                <div style={{ 
+                  display: 'flex', 
+                  justifyContent: 'space-between', 
+                  alignItems: 'flex-start',
+                  marginBottom: '32px'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', flex: 1 }}>
+                    <img 
+                      src={persona.candidate.photo || '/placeholder-avatar.jpg'}
+                      alt={persona.candidate.name?.replace(/<br\/>/g, ' ') || 'Candidate'}
+                      style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
+                    />
+                    <div style={{ flex: 1 }}>
+                      <div style={{ 
+                        fontSize: '28px', 
+                        fontWeight: '700', 
+                        color: '#000',
+                        marginBottom: '8px',
+                        lineHeight: '1.1'
+                      }} dangerouslySetInnerHTML={{ __html: persona.candidate.name || 'John Doe' }}>
+                      </div>
+                      <div style={{ 
+                        display: 'flex', 
+                        alignItems: 'flex-start', 
+                        gap: '8px',
+                        color: '#6b7280',
+                        fontSize: '16px',
+                        fontWeight: '500',
+                        lineHeight: '1.3'
+                      }}>
+                        <div style={{ 
+                          width: '8px', 
+                          height: '8px', 
+                          background: '#10b981', 
+                          borderRadius: '50%',
+                          marginTop: '6px',
+                          flexShrink: 0
+                        }}></div>
+                        <span dangerouslySetInnerHTML={{ __html: persona.candidate.title || 'Professional' }}></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', gap: '12px', flexShrink: 0, marginLeft: '16px' }}>
+                    <button style={{ 
+                      background: '#3b82f6', 
+                      color: 'white', 
+                      padding: '10px 20px', 
+                      border: 'none', 
+                      borderRadius: '8px', 
+                      fontSize: '14px',
+                      fontWeight: '500',
+                      cursor: 'pointer'
+                    }}>Email</button>
+                    <button style={{ 
+                      background: '#3b82f6', 
+                      color: 'white', 
+                      padding: '10px 20px', 
+                      border: 'none', 
+                      borderRadius: '8px', 
+                      fontSize: '14px',
+                      fontWeight: '500',
+                      cursor: 'pointer'
+                    }}>Call</button>
+                  </div>
+                </div>
+
+                {/* Bio */}
+                <div style={{ marginBottom: '32px' }}>
+                  <h4 style={{ 
+                    fontSize: '18px', 
+                    fontWeight: '700', 
+                    color: '#000',
+                    marginBottom: '16px'
+                  }}>Bio</h4>
+                  <p style={{ 
+                    color: '#6b7280', 
+                    fontSize: '15px', 
+                    lineHeight: '1.6',
+                    marginBottom: '12px'
+                  }}>
+                    {persona.candidate.bio || 'Experienced professional with a track record of success.'}
+                  </p>
+                  <a href="#" style={{ 
+                    color: '#3b82f6', 
+                    fontSize: '15px', 
+                    fontWeight: '500',
+                    textDecoration: 'none'
+                  }}>
+                    See more
+                  </a>
+                </div>
+
+                {/* Work Experience */}
+                {persona.candidate.experience && (
+                  <div>
+                    <h4 style={{ 
+                      fontSize: '18px', 
                       fontWeight: '700', 
                       color: '#000',
-                      marginBottom: '8px',
-                      lineHeight: '1.1'
-                    }} dangerouslySetInnerHTML={{ __html: persona.candidate.name }}>
-                    </div>
-                    <div style={{ 
-                      display: 'flex', 
-                      alignItems: 'flex-start', 
-                      gap: '8px',
-                      color: '#6b7280',
-                      fontSize: '16px',
-                      fontWeight: '500',
-                      lineHeight: '1.3'
-                    }}>
+                      marginBottom: '16px'
+                    }}>Work Experience</h4>
+                    <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
                       <div style={{ 
-                        width: '8px', 
-                        height: '8px', 
-                        background: '#10b981', 
-                        borderRadius: '50%',
-                        marginTop: '6px',
+                        width: '48px', 
+                        height: '48px', 
+                        background: persona.candidate.iconColor || '#3b82f6', 
+                        borderRadius: '8px',
+                        marginTop: '4px',
                         flexShrink: 0
                       }}></div>
-                      <span dangerouslySetInnerHTML={{ __html: persona.candidate.title }}></span>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ 
+                          display: 'flex', 
+                          justifyContent: 'space-between', 
+                          alignItems: 'flex-start',
+                          marginBottom: '4px'
+                        }}>
+                          <span style={{ 
+                            fontSize: '16px', 
+                            fontWeight: '700',
+                            color: '#000'
+                          }}>{persona.candidate.experience.title || 'Position'}</span>
+                          <span style={{ 
+                            fontSize: '13px', 
+                            color: '#9ca3af',
+                            whiteSpace: 'nowrap'
+                          }}>{persona.candidate.experience.duration || '2020-Present'}</span>
+                        </div>
+                        <div style={{ 
+                          fontSize: '14px', 
+                          color: '#6b7280',
+                          marginBottom: '8px'
+                        }}>
+                          {persona.candidate.experience.company || 'Company Name'}
+                        </div>
+                        <div style={{ 
+                          fontSize: '13px', 
+                          color: '#9ca3af',
+                          lineHeight: '1.5'
+                        }}>
+                          {persona.candidate.experience.description || 'Professional experience description.'}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div style={{ display: 'flex', gap: '12px', flexShrink: 0, marginLeft: '16px' }}>
-                  <button style={{ 
-                    background: '#3b82f6', 
-                    color: 'white', 
-                    padding: '10px 20px', 
-                    border: 'none', 
-                    borderRadius: '8px', 
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    cursor: 'pointer'
-                  }}>Email</button>
-                  <button style={{ 
-                    background: '#3b82f6', 
-                    color: 'white', 
-                    padding: '10px 20px', 
-                    border: 'none', 
-                    borderRadius: '8px', 
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    cursor: 'pointer'
-                  }}>Call</button>
-                </div>
+                )}
               </div>
-
-              {/* Bio */}
-              <div style={{ marginBottom: '32px' }}>
-                <h4 style={{ 
-                  fontSize: '18px', 
-                  fontWeight: '700', 
-                  color: '#000',
-                  marginBottom: '16px'
-                }}>Bio</h4>
-                <p style={{ 
-                  color: '#6b7280', 
-                  fontSize: '15px', 
-                  lineHeight: '1.6',
-                  marginBottom: '12px'
-                }}>
-                  {persona.candidate.bio}
-                </p>
-                <a href="#" style={{ 
-                  color: '#3b82f6', 
-                  fontSize: '15px', 
-                  fontWeight: '500',
-                  textDecoration: 'none'
-                }}>
-                  See more
-                </a>
-              </div>
-
-              {/* Work Experience */}
-              <div>
-                <h4 style={{ 
-                  fontSize: '18px', 
-                  fontWeight: '700', 
-                  color: '#000',
-                  marginBottom: '16px'
-                }}>Work Experience</h4>
-                <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                  <div style={{ 
-                    width: '48px', 
-                    height: '48px', 
-                    background: persona.candidate.iconColor, 
-                    borderRadius: '8px',
-                    marginTop: '4px',
-                    flexShrink: 0
-                  }}></div>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ 
-                      display: 'flex', 
-                      justifyContent: 'space-between', 
-                      alignItems: 'flex-start',
-                      marginBottom: '4px'
-                    }}>
-                      <span style={{ 
-                        fontSize: '16px', 
-                        fontWeight: '700',
-                        color: '#000'
-                      }}>{persona.candidate.experience.title}</span>
-                      <span style={{ 
-                        fontSize: '13px', 
-                        color: '#9ca3af',
-                        whiteSpace: 'nowrap'
-                      }}>{persona.candidate.experience.duration}</span>
-                    </div>
-                    <div style={{ 
-                      fontSize: '14px', 
-                      color: '#6b7280',
-                      marginBottom: '8px'
-                    }}>
-                      {persona.candidate.experience.company}
-                    </div>
-                    <div style={{ 
-                      fontSize: '13px', 
-                      color: '#9ca3af',
-                      lineHeight: '1.5'
-                    }}>
-                      {persona.candidate.experience.description}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
@@ -328,7 +337,7 @@ export default function LandingPageTemplate({ persona }) {
             color: '#000',
             marginBottom: '48px'
           }}>
-            {persona.formTitle}
+            {persona.formTitle || 'Get Started Today'}
           </h2>
           
           <form onSubmit={handleFormSubmit} style={{ 
@@ -424,7 +433,7 @@ export default function LandingPageTemplate({ persona }) {
               <input
                 type="text"
                 name="companyName"
-                placeholder={persona.companyPlaceholder}
+                placeholder={persona.companyPlaceholder || 'Company Name'}
                 required
                 value={formData.companyName}
                 onChange={handleInputChange}
@@ -456,10 +465,10 @@ export default function LandingPageTemplate({ persona }) {
                   color: '#000'
                 }}
               >
-                <option value="">{persona.selectPlaceholder}</option>
-                {persona.selectOptions.map((option, index) => (
+                <option value="">{persona.selectPlaceholder || 'Select your hiring needs'}</option>
+                {persona.selectOptions?.map((option, index) => (
                   <option key={index} value={option.value}>{option.label}</option>
-                ))}
+                )) || []}
               </select>
             </div>
             
@@ -486,7 +495,7 @@ export default function LandingPageTemplate({ persona }) {
               fontSize: '15px', 
               marginTop: '20px' 
             }}>
-              {persona.formNote}
+              {persona.formNote || 'We\'ll get back to you within 24 hours.'}
             </p>
           </form>
         </div>
@@ -509,7 +518,7 @@ export default function LandingPageTemplate({ persona }) {
               fontWeight: '700', 
               color: '#000'
             }}>
-              {persona.pricingTitle}
+              {persona.pricingTitle || 'Simple, Transparent Pricing'}
             </h2>
           </div>
           
@@ -555,7 +564,7 @@ export default function LandingPageTemplate({ persona }) {
             maxWidth: '1000px',
             margin: '0 auto'
           }}>
-            {persona.pricing.map((pricingPlan, index) => (
+            {persona.pricing?.map((pricingPlan, index) => (
               <PricingCard 
                 key={index}
                 title={pricingPlan.title}
@@ -564,7 +573,7 @@ export default function LandingPageTemplate({ persona }) {
                 features={pricingPlan.features}
                 featured={pricingPlan.featured}
               />
-            ))}
+            )) || []}
           </div>
         </div>
       </section>
@@ -572,7 +581,7 @@ export default function LandingPageTemplate({ persona }) {
   )
 }
 
-function PricingCard({ title, price, description, features, featured = false }) {
+function PricingCard({ title, price, description, features = [], featured = false }) {
   return (
     <div style={{ 
       background: 'white', 
@@ -611,7 +620,7 @@ function PricingCard({ title, price, description, features, featured = false }) 
             fontWeight: '600', 
             color: '#000',
             marginBottom: '4px'
-          }}>{title}</h4>
+          }}>{title || 'Plan'}</h4>
           <div style={{ 
             fontSize: '14px', 
             color: '#6b7280'
@@ -624,7 +633,7 @@ function PricingCard({ title, price, description, features, featured = false }) 
           fontSize: '48px', 
           fontWeight: '700', 
           color: '#000'
-        }}>{price}</span>
+        }}>{price || '$0'}</span>
         <span style={{ 
           fontSize: '18px', 
           color: '#6b7280',
@@ -634,7 +643,7 @@ function PricingCard({ title, price, description, features, featured = false }) 
           fontSize: '15px', 
           color: '#6b7280',
           marginTop: '8px'
-        }}>{description}</div>
+        }}>{description || 'Basic plan description'}</div>
       </div>
       
       <button style={{ 
@@ -649,7 +658,7 @@ function PricingCard({ title, price, description, features, featured = false }) 
         cursor: 'pointer',
         marginBottom: '32px'
       }}>
-        Select {title}
+        Select {title || 'Plan'}
       </button>
       
       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>

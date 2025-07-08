@@ -1,5 +1,3 @@
-// File: components/LandingPageTemplate.js
-
 import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -35,13 +33,6 @@ export default function LandingPageTemplate({ persona }) {
     })
   }
 
-  // ✅ SAFELY define plan from persona
-  const plan = persona?.plan || {
-    name: 'Standard Plan',
-    price: '$99/month',
-    features: ['Basic support', 'Unlimited hires']
-  }
-
   if (!persona) return <div>Loading...</div>
 
   return (
@@ -72,12 +63,27 @@ export default function LandingPageTemplate({ persona }) {
 
         <div style={{ marginTop: '2rem' }}>
           <h2>{persona.pricingTitle || 'Pricing'}</h2>
-          <p><strong>{plan.name}</strong> — {plan.price}</p>
-          <ul>
-            {plan.features.map((feature, i) => (
-              <li key={i}>{feature}</li>
-            ))}
-          </ul>
+
+          {Array.isArray(persona.pricing) && persona.pricing.map((plan) => (
+            <div key={plan.title} style={{ 
+              border: '1px solid #ccc', 
+              borderRadius: '8px', 
+              padding: '1rem', 
+              marginBottom: '1rem' 
+            }}>
+              <h3>{plan.title}</h3>
+              <p><strong>{plan.price}</strong> — {plan.description}</p>
+              <ul>
+                {plan.features.map((feature, i) => (
+                  <li key={i}>{feature}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          {!Array.isArray(persona.pricing) && (
+            <p>No pricing plans available.</p>
+          )}
         </div>
 
         <p style={{ marginTop: '1rem', fontStyle: 'italic' }}>{persona.formNote}</p>

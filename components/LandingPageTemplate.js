@@ -15,7 +15,6 @@ export default function LandingPageTemplate({ persona }) {
   const handleFormSubmit = async (e) => {
     e.preventDefault()
     
-    const score = Math.floor(Math.random() * 10) + 15
     alert(`Thank you! Your information has been submitted. Our team will contact you within 24 hours to discuss your ${persona.title.toLowerCase()} staffing needs.`)
     
     setFormData({
@@ -46,41 +45,64 @@ export default function LandingPageTemplate({ persona }) {
       <header style={{ 
         background: 'white', 
         borderBottom: '1px solid #e5e7eb',
-        padding: '1rem 0'
+        padding: '20px 0'
       }}>
         <div style={{ 
           maxWidth: '1200px', 
           margin: '0 auto', 
-          padding: '0 1rem',
+          padding: '0 40px',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center'
         }}>
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
             <div style={{ 
-              width: '48px', 
-              height: '48px', 
-              background: '#2563eb', 
+              width: '50px', 
+              height: '50px', 
+              background: '#1e40af', 
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'white',
-              fontWeight: 'bold',
-              fontSize: '18px'
+              position: 'relative'
             }}>
-              PF
+              <span style={{ 
+                color: 'white', 
+                fontWeight: '700', 
+                fontSize: '20px',
+                position: 'absolute',
+                left: '8px'
+              }}>P</span>
+              <div style={{
+                position: 'absolute',
+                right: '16px',
+                top: '50%',
+                transform: 'translateY(-50%)'
+              }}>
+                <div style={{ width: '12px', height: '2px', background: 'white', marginBottom: '2px' }}></div>
+                <div style={{ width: '12px', height: '2px', background: 'white', marginBottom: '2px' }}></div>
+                <div style={{ width: '12px', height: '2px', background: 'white' }}></div>
+              </div>
+              <span style={{ 
+                color: 'white', 
+                fontWeight: '700', 
+                fontSize: '20px',
+                position: 'absolute',
+                right: '8px'
+              }}>F</span>
             </div>
           </Link>
           <nav style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-            <a href="#pricing" style={{ color: '#6b7280', textDecoration: 'none' }}>Pricing</a>
-            <a href="#" style={{ color: '#6b7280', textDecoration: 'none' }}>Log in</a>
+            <a href="#pricing" style={{ color: '#6b7280', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>Pricing</a>
+            <a href="#" style={{ color: '#6b7280', textDecoration: 'none', fontSize: '16px', fontWeight: '500' }}>Log in</a>
             <a href="#signup" style={{ 
               background: '#000', 
               color: 'white', 
-              padding: '10px 20px', 
+              padding: '12px 24px', 
               borderRadius: '8px', 
-              textDecoration: 'none' 
+              textDecoration: 'none',
+              fontSize: '16px',
+              fontWeight: '500'
             }}>Sign up</a>
           </nav>
         </div>
@@ -89,30 +111,33 @@ export default function LandingPageTemplate({ persona }) {
       {/* Hero Section */}
       <section style={{ 
         background: persona.backgroundColor,
-        padding: '5rem 1rem'
+        padding: '80px 0',
+        minHeight: '600px'
       }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
           <div style={{ 
             display: 'grid', 
             gridTemplateColumns: '1fr 440px', 
-            gap: '5rem',
-            alignItems: 'center'
+            gap: '80px',
+            alignItems: 'start',
+            paddingTop: '40px'
           }}>
             {/* Left Side - Text */}
             <div>
               <h1 style={{ 
-                fontSize: '4rem', 
-                fontWeight: 'bold', 
-                lineHeight: '1.1',
-                marginBottom: '2rem',
-                color: '#111827'
+                fontSize: '72px', 
+                fontWeight: '700', 
+                lineHeight: '0.9',
+                color: '#000',
+                marginBottom: '32px'
               }} dangerouslySetInnerHTML={{ __html: persona.headline }}>
               </h1>
               <p style={{ 
-                fontSize: '1.25rem', 
+                fontSize: '18px', 
                 color: '#6b7280',
-                marginBottom: '3rem',
-                lineHeight: '1.6'
+                lineHeight: '1.6',
+                marginBottom: '48px',
+                maxWidth: '500px'
               }}>
                 {persona.subtext}
               </p>
@@ -121,49 +146,60 @@ export default function LandingPageTemplate({ persona }) {
                 style={{
                   background: '#000',
                   color: 'white',
-                  padding: '1rem 2rem',
-                  borderRadius: '12px',
-                  fontSize: '1.125rem',
-                  fontWeight: '600',
+                  padding: '16px 32px',
                   border: 'none',
-                  cursor: 'pointer'
+                  borderRadius: '12px',
+                  fontSize: '18px',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  display: 'inline-block'
                 }}
               >
                 {persona.ctaText}
               </button>
             </div>
 
-              {/* Right Side - Candidate Card */}
+            {/* Right Side - Candidate Card */}
             <div style={{ 
               background: 'white', 
               borderRadius: '16px', 
-              padding: '2rem',
-              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
-              maxWidth: '440px'
+              padding: '32px',
+              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+              width: '440px',
+              position: 'relative'
             }}>
               {/* Candidate Header */}
               <div style={{ 
                 display: 'flex', 
                 justifyContent: 'space-between', 
                 alignItems: 'flex-start',
-                marginBottom: '2rem'
+                marginBottom: '32px'
               }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', flex: 1 }}>
                   <img 
                     src={persona.candidate.photo}
                     alt={persona.candidate.name.replace(/<br\/>/g, ' ')}
                     style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
                   />
                   <div style={{ flex: 1 }}>
-                    <h3 style={{ 
-                      fontSize: '1.75rem', 
-                      fontWeight: 'bold', 
-                      lineHeight: '1.2',
-                      marginBottom: '0.5rem',
-                      color: '#111827'
+                    <div style={{ 
+                      fontSize: '28px', 
+                      fontWeight: '700', 
+                      color: '#000',
+                      marginBottom: '8px',
+                      lineHeight: '1.1'
                     }} dangerouslySetInnerHTML={{ __html: persona.candidate.name }}>
-                    </h3>
-                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', marginBottom: '1rem' }}>
+                    </div>
+                    <div style={{ 
+                      display: 'flex', 
+                      alignItems: 'flex-start', 
+                      gap: '8px',
+                      color: '#6b7280',
+                      fontSize: '16px',
+                      fontWeight: '500',
+                      lineHeight: '1.3'
+                    }}>
                       <div style={{ 
                         width: '8px', 
                         height: '8px', 
@@ -172,52 +208,56 @@ export default function LandingPageTemplate({ persona }) {
                         marginTop: '6px',
                         flexShrink: 0
                       }}></div>
-                      <span style={{ color: '#6b7280', fontSize: '1rem', lineHeight: '1.3' }} dangerouslySetInnerHTML={{ __html: persona.candidate.title }}>
-                      </span>
+                      <span dangerouslySetInnerHTML={{ __html: persona.candidate.title }}></span>
                     </div>
                   </div>
                 </div>
-                <div style={{ display: 'flex', gap: '8px', flexShrink: 0, marginLeft: '1rem' }}>
+                <div style={{ display: 'flex', gap: '12px', flexShrink: 0, marginLeft: '16px' }}>
                   <button style={{ 
                     background: '#3b82f6', 
                     color: 'white', 
-                    padding: '8px 16px', 
+                    padding: '10px 20px', 
                     border: 'none', 
                     borderRadius: '8px', 
                     fontSize: '14px',
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap'
+                    fontWeight: '500',
+                    cursor: 'pointer'
                   }}>Email</button>
                   <button style={{ 
                     background: '#3b82f6', 
                     color: 'white', 
-                    padding: '8px 16px', 
+                    padding: '10px 20px', 
                     border: 'none', 
                     borderRadius: '8px', 
                     fontSize: '14px',
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap'
+                    fontWeight: '500',
+                    cursor: 'pointer'
                   }}>Call</button>
                 </div>
               </div>
 
               {/* Bio */}
-              <div style={{ marginBottom: '2rem' }}>
+              <div style={{ marginBottom: '32px' }}>
                 <h4 style={{ 
-                  fontSize: '1rem', 
-                  fontWeight: '600', 
-                  marginBottom: '0.75rem',
-                  color: '#111827'
+                  fontSize: '18px', 
+                  fontWeight: '700', 
+                  color: '#000',
+                  marginBottom: '16px'
                 }}>Bio</h4>
                 <p style={{ 
                   color: '#6b7280', 
-                  fontSize: '0.875rem', 
+                  fontSize: '15px', 
                   lineHeight: '1.6',
-                  marginBottom: '0.5rem'
+                  marginBottom: '12px'
                 }}>
                   {persona.candidate.bio}
                 </p>
-                <a href="#" style={{ color: '#3b82f6', fontSize: '0.875rem', textDecoration: 'none' }}>
+                <a href="#" style={{ 
+                  color: '#3b82f6', 
+                  fontSize: '15px', 
+                  fontWeight: '500',
+                  textDecoration: 'none'
+                }}>
                   See more
                 </a>
               </div>
@@ -225,12 +265,12 @@ export default function LandingPageTemplate({ persona }) {
               {/* Work Experience */}
               <div>
                 <h4 style={{ 
-                  fontSize: '1rem', 
-                  fontWeight: '600', 
-                  marginBottom: '1rem',
-                  color: '#111827'
+                  fontSize: '18px', 
+                  fontWeight: '700', 
+                  color: '#000',
+                  marginBottom: '16px'
                 }}>Work Experience</h4>
-                <div style={{ display: 'flex', gap: '1rem' }}>
+                <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
                   <div style={{ 
                     width: '48px', 
                     height: '48px', 
@@ -239,35 +279,33 @@ export default function LandingPageTemplate({ persona }) {
                     marginTop: '4px',
                     flexShrink: 0
                   }}></div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ flex: 1 }}>
                     <div style={{ 
                       display: 'flex', 
                       justifyContent: 'space-between', 
                       alignItems: 'flex-start',
-                      marginBottom: '4px',
-                      flexWrap: 'wrap',
-                      gap: '8px'
+                      marginBottom: '4px'
                     }}>
                       <span style={{ 
-                        fontSize: '0.875rem', 
-                        fontWeight: '600',
-                        color: '#111827'
+                        fontSize: '16px', 
+                        fontWeight: '700',
+                        color: '#000'
                       }}>{persona.candidate.experience.title}</span>
                       <span style={{ 
-                        fontSize: '0.75rem', 
+                        fontSize: '13px', 
                         color: '#9ca3af',
                         whiteSpace: 'nowrap'
                       }}>{persona.candidate.experience.duration}</span>
                     </div>
                     <div style={{ 
-                      fontSize: '0.875rem', 
+                      fontSize: '14px', 
                       color: '#6b7280',
-                      marginBottom: '0.5rem'
+                      marginBottom: '8px'
                     }}>
                       {persona.candidate.experience.company}
                     </div>
                     <div style={{ 
-                      fontSize: '0.75rem', 
+                      fontSize: '13px', 
                       color: '#9ca3af',
                       lineHeight: '1.5'
                     }}>
@@ -282,27 +320,28 @@ export default function LandingPageTemplate({ persona }) {
       </section>
 
       {/* Form Section */}
-      <section id="signup" style={{ background: 'white', padding: '5rem 1rem' }}>
-        <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
+      <section id="signup" style={{ background: 'white', padding: '100px 0' }}>
+        <div style={{ maxWidth: '600px', margin: '0 auto', padding: '0 40px', textAlign: 'center' }}>
           <h2 style={{ 
-            fontSize: '3rem', 
-            fontWeight: 'bold', 
-            marginBottom: '3rem',
-            color: '#111827'
+            fontSize: '48px', 
+            fontWeight: '700', 
+            color: '#000',
+            marginBottom: '48px'
           }}>
             {persona.formTitle}
           </h2>
           
           <form onSubmit={handleFormSubmit} style={{ 
             background: '#f9fafb', 
-            padding: '3rem', 
-            borderRadius: '16px' 
+            padding: '48px', 
+            borderRadius: '16px',
+            textAlign: 'left'
           }}>
             <div style={{ 
               display: 'grid', 
               gridTemplateColumns: '1fr 1fr', 
-              gap: '1.5rem',
-              marginBottom: '1.5rem'
+              gap: '20px',
+              marginBottom: '24px'
             }}>
               <input
                 type="text"
@@ -313,11 +352,12 @@ export default function LandingPageTemplate({ persona }) {
                 onChange={handleInputChange}
                 style={{
                   width: '100%',
-                  padding: '1rem 1.25rem',
+                  padding: '16px 20px',
                   border: '1px solid #d1d5db',
                   borderRadius: '12px',
-                  fontSize: '1rem',
-                  background: 'white'
+                  fontSize: '16px',
+                  background: 'white',
+                  color: '#000'
                 }}
               />
               <input
@@ -329,11 +369,12 @@ export default function LandingPageTemplate({ persona }) {
                 onChange={handleInputChange}
                 style={{
                   width: '100%',
-                  padding: '1rem 1.25rem',
+                  padding: '16px 20px',
                   border: '1px solid #d1d5db',
                   borderRadius: '12px',
-                  fontSize: '1rem',
-                  background: 'white'
+                  fontSize: '16px',
+                  background: 'white',
+                  color: '#000'
                 }}
               />
             </div>
@@ -341,8 +382,8 @@ export default function LandingPageTemplate({ persona }) {
             <div style={{ 
               display: 'grid', 
               gridTemplateColumns: '1fr 1fr', 
-              gap: '1.5rem',
-              marginBottom: '1.5rem'
+              gap: '20px',
+              marginBottom: '24px'
             }}>
               <input
                 type="email"
@@ -353,11 +394,12 @@ export default function LandingPageTemplate({ persona }) {
                 onChange={handleInputChange}
                 style={{
                   width: '100%',
-                  padding: '1rem 1.25rem',
+                  padding: '16px 20px',
                   border: '1px solid #d1d5db',
                   borderRadius: '12px',
-                  fontSize: '1rem',
-                  background: 'white'
+                  fontSize: '16px',
+                  background: 'white',
+                  color: '#000'
                 }}
               />
               <input
@@ -368,16 +410,17 @@ export default function LandingPageTemplate({ persona }) {
                 onChange={handleInputChange}
                 style={{
                   width: '100%',
-                  padding: '1rem 1.25rem',
+                  padding: '16px 20px',
                   border: '1px solid #d1d5db',
                   borderRadius: '12px',
-                  fontSize: '1rem',
-                  background: 'white'
+                  fontSize: '16px',
+                  background: 'white',
+                  color: '#000'
                 }}
               />
             </div>
             
-            <div style={{ marginBottom: '1.5rem' }}>
+            <div style={{ marginBottom: '24px' }}>
               <input
                 type="text"
                 name="companyName"
@@ -387,16 +430,17 @@ export default function LandingPageTemplate({ persona }) {
                 onChange={handleInputChange}
                 style={{
                   width: '100%',
-                  padding: '1rem 1.25rem',
+                  padding: '16px 20px',
                   border: '1px solid #d1d5db',
                   borderRadius: '12px',
-                  fontSize: '1rem',
-                  background: 'white'
+                  fontSize: '16px',
+                  background: 'white',
+                  color: '#000'
                 }}
               />
             </div>
             
-            <div style={{ marginBottom: '2rem' }}>
+            <div style={{ marginBottom: '32px' }}>
               <select
                 name="hiringNeeds"
                 required
@@ -404,12 +448,12 @@ export default function LandingPageTemplate({ persona }) {
                 onChange={handleInputChange}
                 style={{
                   width: '100%',
-                  padding: '1rem 1.25rem',
+                  padding: '16px 20px',
                   border: '1px solid #d1d5db',
                   borderRadius: '12px',
-                  fontSize: '1rem',
+                  fontSize: '16px',
                   background: 'white',
-                  color: '#374151'
+                  color: '#000'
                 }}
               >
                 <option value="">{persona.selectPlaceholder}</option>
@@ -425,11 +469,11 @@ export default function LandingPageTemplate({ persona }) {
                 width: '100%',
                 background: '#000',
                 color: 'white',
-                padding: '1rem 2rem',
-                borderRadius: '12px',
-                fontSize: '1.125rem',
-                fontWeight: '600',
+                padding: '16px 32px',
                 border: 'none',
+                borderRadius: '12px',
+                fontSize: '18px',
+                fontWeight: '600',
                 cursor: 'pointer'
               }}
             >
@@ -437,9 +481,10 @@ export default function LandingPageTemplate({ persona }) {
             </button>
             
             <p style={{ 
+              textAlign: 'center',
               color: '#6b7280', 
-              fontSize: '0.875rem', 
-              marginTop: '1rem' 
+              fontSize: '15px', 
+              marginTop: '20px' 
             }}>
               {persona.formNote}
             </p>
@@ -447,99 +492,68 @@ export default function LandingPageTemplate({ persona }) {
         </div>
       </section>
 
-      {/* Performance Analytics Section */}
-      <section style={{ background: '#f8f9fa', padding: '4rem 1rem', borderTop: '1px solid #e5e7eb' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+      {/* Pricing Section */}
+      <section id="pricing" style={{ background: '#f9fafb', padding: '100px 0' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+            <div style={{ 
+              color: '#6b7280',
+              fontSize: '14px',
+              fontWeight: '600',
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              marginBottom: '16px'
+            }}>PRICING</div>
             <h2 style={{ 
-              fontSize: '2rem', 
-              fontWeight: 'bold', 
-              marginBottom: '1rem',
-              color: '#111827'
+              fontSize: '48px', 
+              fontWeight: '700', 
+              color: '#000'
             }}>
-              Platform Performance
+              {persona.pricingTitle}
             </h2>
-            <p style={{ color: '#6b7280', fontSize: '1.125rem' }}>
-              Real-time insights from our healthcare recruiting platform
-            </p>
           </div>
           
           <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(4, 1fr)', 
-            gap: '2rem'
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: '60px'
           }}>
             <div style={{ 
-              background: 'white', 
-              padding: '2rem', 
+              background: 'white',
               borderRadius: '12px',
-              textAlign: 'center',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+              padding: '4px',
+              display: 'flex',
+              boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
             }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#2563eb', marginBottom: '0.5rem' }}>
-                {Math.floor(Math.random() * 15) + 35}
-              </div>
-              <div style={{ color: '#6b7280', fontSize: '0.9rem' }}>Active Searches Today</div>
-            </div>
-            
-            <div style={{ 
-              background: 'white', 
-              padding: '2rem', 
-              borderRadius: '12px',
-              textAlign: 'center',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-            }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#10b981', marginBottom: '0.5rem' }}>
-                {Math.floor(Math.random() * 10) + 22}
-              </div>
-              <div style={{ color: '#6b7280', fontSize: '0.9rem' }}>Avg. Lead Score</div>
-            </div>
-            
-            <div style={{ 
-              background: 'white', 
-              padding: '2rem', 
-              borderRadius: '12px',
-              textAlign: 'center',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-            }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#f59e0b', marginBottom: '0.5rem' }}>
-                {Math.floor(Math.random() * 20) + 165}
-              </div>
-              <div style={{ color: '#6b7280', fontSize: '0.9rem' }}>Emails Sent Today</div>
-            </div>
-            
-            <div style={{ 
-              background: 'white', 
-              padding: '2rem', 
-              borderRadius: '12px',
-              textAlign: 'center',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-            }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#8b5cf6', marginBottom: '0.5rem' }}>
-                {Math.floor(Math.random() * 5) + 67}%
-              </div>
-              <div style={{ color: '#6b7280', fontSize: '0.9rem' }}>Response Rate</div>
+              <button style={{ 
+                padding: '12px 24px',
+                border: 'none',
+                background: '#f3f4f6',
+                borderRadius: '8px',
+                fontSize: '15px',
+                fontWeight: '500',
+                cursor: 'pointer',
+                color: '#000'
+              }}>Monthly</button>
+              <button style={{ 
+                padding: '12px 24px',
+                border: 'none',
+                background: 'none',
+                borderRadius: '8px',
+                fontSize: '15px',
+                fontWeight: '500',
+                cursor: 'pointer',
+                color: '#6b7280'
+              }}>Annual <span style={{ color: '#3b82f6', fontWeight: '600', marginLeft: '8px' }}>Save 20%</span></button>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" style={{ background: '#f9fafb', padding: '5rem 1rem' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{ 
-            fontSize: '3rem', 
-            fontWeight: 'bold', 
-            marginBottom: '4rem',
-            color: '#111827'
-          }}>
-            {persona.pricingTitle}
-          </h2>
-          
           <div style={{ 
             display: 'grid', 
             gridTemplateColumns: 'repeat(3, 1fr)', 
-            gap: '2rem'
+            gap: '32px',
+            maxWidth: '1000px',
+            margin: '0 auto'
           }}>
             {persona.pricing.map((plan, index) => (
               <PricingCard 
@@ -562,38 +576,78 @@ function PricingCard({ title, price, description, features, featured = false }) 
   return (
     <div style={{ 
       background: 'white', 
-      padding: '2rem', 
       borderRadius: '16px',
-      boxShadow: featured ? '0 10px 25px rgba(59, 130, 246, 0.3)' : '0 4px 6px rgba(0,0,0,0.1)',
-      border: featured ? '2px solid #3b82f6' : '1px solid #e5e7eb',
+      padding: '40px 32px',
+      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+      border: featured ? '2px solid #3b82f6' : 'none',
       transform: featured ? 'scale(1.05)' : 'none'
     }}>
-      <h3 style={{ 
-        fontSize: '1.25rem', 
-        fontWeight: '600', 
-        marginBottom: '0.5rem',
-        color: '#111827'
-      }}>{title}</h3>
       <div style={{ 
-        fontSize: '2.5rem', 
-        fontWeight: 'bold', 
-        marginBottom: '0.5rem',
-        color: '#111827'
+        display: 'flex',
+        alignItems: 'center',
+        gap: '16px',
+        marginBottom: '24px'
       }}>
-        {price}<span style={{ fontSize: '1rem', color: '#6b7280' }}>/month</span>
+        <div style={{ 
+          width: '40px',
+          height: '40px',
+          background: '#dbeafe',
+          borderRadius: '12px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0
+        }}>
+          <div style={{ 
+            width: '16px',
+            height: '16px',
+            background: '#3b82f6',
+            borderRadius: '4px'
+          }}></div>
+        </div>
+        <div>
+          <h4 style={{ 
+            fontSize: '20px', 
+            fontWeight: '600', 
+            color: '#000',
+            marginBottom: '4px'
+          }}>{title}</h4>
+          <div style={{ 
+            fontSize: '14px', 
+            color: '#6b7280'
+          }}>{plan.billing || 'Monthly only'}</div>
+        </div>
       </div>
-      <p style={{ color: '#6b7280', marginBottom: '2rem' }}>{description}</p>
+      
+      <div style={{ marginBottom: '32px' }}>
+        <span style={{ 
+          fontSize: '48px', 
+          fontWeight: '700', 
+          color: '#000'
+        }}>{price}</span>
+        <span style={{ 
+          fontSize: '18px', 
+          color: '#6b7280',
+          marginLeft: '4px'
+        }}>per month</span>
+        <div style={{ 
+          fontSize: '15px', 
+          color: '#6b7280',
+          marginTop: '8px'
+        }}>{description}</div>
+      </div>
       
       <button style={{ 
         width: '100%',
         background: '#000',
         color: 'white',
-        padding: '0.75rem',
-        borderRadius: '12px',
+        padding: '16px',
         border: 'none',
+        borderRadius: '12px',
+        fontSize: '16px',
         fontWeight: '600',
-        marginBottom: '2rem',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        marginBottom: '32px'
       }}>
         Select {title}
       </button>
@@ -603,22 +657,23 @@ function PricingCard({ title, price, description, features, featured = false }) 
           <li key={index} style={{ 
             display: 'flex',
             alignItems: 'center',
-            marginBottom: '0.75rem',
-            fontSize: '0.875rem',
+            marginBottom: '16px',
+            fontSize: '15px',
             color: '#6b7280'
           }}>
             <div style={{ 
-              width: '16px', 
-              height: '16px', 
+              width: '20px', 
+              height: '20px', 
               background: '#10b981', 
               borderRadius: '50%',
-              marginRight: '0.75rem',
+              marginRight: '12px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: 'white',
-              fontSize: '10px',
-              fontWeight: 'bold'
+              fontSize: '12px',
+              fontWeight: '600',
+              flexShrink: 0
             }}>
               ✓
             </div>

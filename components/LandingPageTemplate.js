@@ -615,7 +615,7 @@ function PricingCard({ title, price, description, features, featured = false }) 
           <div style={{ 
             fontSize: '14px', 
             color: '#6b7280'
-          }}>{plan.billing || 'Monthly only'}</div>
+          }}>Monthly only</div>
         </div>
       </div>
       

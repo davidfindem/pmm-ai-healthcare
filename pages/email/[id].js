@@ -1,6 +1,6 @@
 
 import { useRouter } from 'next/router';
-import { personas } from '../../data/personas';
+import personas from '../../data/personas';
 
 export default function EmailView() {
   const router = useRouter();
@@ -22,3 +22,4 @@ export default function EmailView() {
     </div>
   );
 }
+

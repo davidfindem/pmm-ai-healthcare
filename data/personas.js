@@ -1,227 +1,231 @@
-export const personas = {
-  "nursing-home": {
-    title: "Nursing Home Staffing Solutions",
-    metaDescription: "Hire top-tier nursing home staff fast — CNA, LPN, RN, and more.",
-    headline: "Find Your Next <br><span style='color: #067547;'>Nursing Hire</span> in Minutes",
-    subtext: "We specialize in staffing for skilled nursing facilities, rehab centers, and long-term care environments.",
-    companyPlaceholder: "e.g. Rosewood Nursing Center",
-    selectPlaceholder: "I need to hire a...",
-    selectOptions: [
-      { value: "cna", label: "Certified Nursing Assistant (CNA)" },
-      { value: "lpn", label: "Licensed Practical Nurse (LPN)" },
-      { value: "rn", label: "Registered Nurse (RN)" },
-      { value: "admin", label: "Front Office / Admin" }
-    ],
-    ctaText: "Get CNA Candidates",
-    pricingTitle: "Simple Pricing, No Surprises",
-    pricing: [
-      {
-        title: "Nursing Essentials",
-        price: "$99/mo",
-        description: "For entry-level and part-time needs",
-        features: ["10 hires/mo", "AI matching", "Dedicated support"]
-      },
-      {
-        title: "Care Team Pro",
-        price: "$249/mo",
-        description: "Unlimited full-time hiring",
-        features: ["Unlimited hires", "Automated screening", "Interview scheduler"]
-      }
-    ],
-    formNote: "*You’ll get candidate matches right away — no credit card needed.",
-    exampleCandidate: {
-      name: "Lily Thompson",
-      role: "Certified Nursing Assistant",
-      location: "Wichita, KS",
-      image: "/images/personas/lily.png",
-      bio: "Lily has over 6 years of experience providing direct patient care in skilled nursing facilities. She’s dependable, compassionate, and certified in dementia support and fall prevention. Most recently worked night shifts at Evergreen Senior Care."
-    }
-  },
-  "dental-office": {
-    title: "Dental Staffing That Fills Your Schedule",
-    metaDescription: "Hire dental assistants, hygienists, and front office staff fast.",
-    headline: "Hire Great <br><span style='color: #067547;'>Dental Assistants</span> in Minutes",
-    subtext: "We match you with credentialed dental professionals already looking for work in your area.",
-    companyPlaceholder: "e.g. Sunflower Smiles Dental",
-    selectPlaceholder: "I need to hire a...",
-    selectOptions: [
-      { value: "rda", label: "Registered Dental Assistant (RDA)" },
-      { value: "hygienist", label: "Dental Hygienist" },
-      { value: "front", label: "Front Desk Coordinator" },
-      { value: "office-manager", label: "Office Manager" }
-    ],
-    ctaText: "Find My Dental Staff",
-    pricingTitle: "Pricing Made for Small Practices",
-    pricing: [
-      {
-        title: "Dental Lite",
-        price: "$89/mo",
-        description: "Great for part-time or fill-in needs",
-        features: ["5 hires/mo", "Auto-matching", "Email support"]
-      },
-      {
-        title: "Dental Growth Plan",
-        price: "$179/mo",
-        description: "Ongoing full-time hiring",
-        features: ["Unlimited hires", "Scheduling support", "AI candidate ranking"]
-      }
-    ],
-    formNote: "*We’ll send candidate matches within minutes.",
-    exampleCandidate: {
-      name: "Marco Reyes",
-      role: "Registered Dental Assistant",
-      location: "Olathe, KS",
-      image: "/images/personas/marco.png",
-      bio: "Marco is a bilingual RDA with 4 years experience in pediatric and family dental offices. Skilled in chairside assisting, digital X-rays, and patient prep. Formerly at Happy Smiles and holds OSHA and CPR certifications."
-    }
-  },
-  "urgent-care": {
-    title: "Hire Certified Urgent Care Professionals",
-    metaDescription: "Source medical assistants, X-ray techs, and front desk staff for your urgent care clinic.",
-    headline: "Get <br><span style='color: #067547;'>Urgent Care Staff</span> On-Demand",
-    subtext: "Your clinic deserves vetted, ready-to-start professionals who can handle the fast pace.",
-    companyPlaceholder: "e.g. Midwest Urgent Care",
-    selectPlaceholder: "We’re hiring a...",
-    selectOptions: [
-      { value: "ma", label: "Medical Assistant (MA)" },
-      { value: "xray", label: "X-ray Technician" },
-      { value: "front", label: "Front Desk Coordinator" },
-      { value: "np", label: "Nurse Practitioner" }
-    ],
-    ctaText: "Get Urgent Care Candidates",
-    pricingTitle: "Plans for Growing Clinics",
-    pricing: [
-      {
-        title: "Clinic Starter",
-        price: "$129/mo",
-        description: "Ideal for 1-2 urgent care hires",
-        features: ["10 hires/mo", "Candidate messaging", "Support included"]
-      },
-      {
-        title: "Clinic Unlimited",
-        price: "$299/mo",
-        description: "For busy centers and multi-site groups",
-        features: ["Unlimited hires", "Shift scheduling", "Dedicated rep"]
-      }
-    ],
-    formNote: "*Most clinics get candidates within the hour.",
-    exampleCandidate: {
-      name: "Dev Patel",
-      role: "Medical Assistant",
-      location: "Overland Park, KS",
-      image: "/images/personas/dev.png",
-      bio: "Dev is a certified Medical Assistant with urgent care experience in high-volume walk-in clinics. He’s EKG trained, performs vitals and blood draws with precision, and uses athenahealth daily. Available for day or evening shifts."
-    }
-  },
+const personas = {
   "mental-health": {
-    title: "Find Mental Health Professionals Fast",
-    metaDescription: "Source therapists, counselors, and case workers quickly.",
-    headline: "Trusted <br><span style='color: #067547;'>Mental Health Staffing</span> at Your Fingertips",
-    subtext: "Whether you're running a clinic or nonprofit, we help you hire compassionate, licensed professionals.",
-    companyPlaceholder: "e.g. HeartBridge Counseling Center",
-    selectPlaceholder: "We need a...",
+    title: "Mental Health Staffing Solutions",
+    metaDescription: "Connect with top-tier mental health professionals ready to serve your community.",
+    headline: "Hire qualified <em>Mental Health</em> professionals instantly",
+    subtext: "We source licensed therapists, social workers, and support staff for behavioral health organizations.",
+    companyPlaceholder: "Clinic or Practice Name",
+    selectPlaceholder: "What role are you hiring for?",
     selectOptions: [
-      { value: "lcsw", label: "Licensed Clinical Social Worker (LCSW)" },
-      { value: "therapist", label: "Licensed Therapist (LMFT, LPC)" },
-      { value: "case", label: "Case Manager" }
+      { value: "therapist", label: "Therapist" },
+      { value: "social-worker", label: "Social Worker" },
+      { value: "case-manager", label: "Case Manager" }
     ],
-    ctaText: "Hire a Mental Health Pro",
-    pricingTitle: "Nonprofit & Clinical Pricing",
+    ctaText: "Get Mental Health Candidates",
+    formNote: "You'll receive a shortlist within 24 hours.",
+    pricingTitle: "Mental Health Pricing Plans",
     pricing: [
       {
-        title: "Support Core",
-        price: "$119/mo",
-        description: "For occasional staffing needs",
-        features: ["Up to 5 hires/mo", "Candidate messaging", "Profile filtering"]
+        title: "Basic",
+        price: "$999/mo",
+        description: "Ideal for small practices",
+        features: ["Up to 2 hires", "Pre-vetted profiles", "Email support"]
       },
       {
-        title: "Therapy Plus",
-        price: "$249/mo",
-        description: "Ongoing placements and shift hires",
-        features: ["Unlimited hires", "Interview booking", "Auto-matching"]
+        title: "Pro",
+        price: "$1999/mo",
+        description: "Best for clinics and networks",
+        features: ["Up to 5 hires", "Phone support", "Dedicated success manager"]
       }
     ],
-    formNote: "*All candidates licensed and background checked.",
     exampleCandidate: {
       name: "Sarah King",
       role: "Licensed Clinical Social Worker",
-      location: "Topeka, KS",
-      image: "/images/personas/sarah.png",
-      bio: "Sarah has 9 years of experience as an LCSW in both outpatient and residential programs. Trauma-informed, bilingual, and a former team lead at Hope Renewal. Available for in-person or hybrid work."
+      location: "Des Moines, IA",
+      image: "/images/sarah-king.jpg",
+      bio: "Sarah has 8+ years of experience supporting individuals with trauma and substance use recovery. She specializes in CBT and trauma-informed therapy, working across both outpatient and residential settings."
     }
   },
-  "physical-therapy": {
-    title: "Physical Therapy Staffing Made Simple",
-    metaDescription: "Hire PTs, PTAs, and rehab aides without the wait.",
-    headline: "Hire <br><span style='color: #067547;'>Rehab & Therapy Pros</span> Instantly",
-    subtext: "From sports rehab to home health, we bring you experienced clinicians and assistants.",
-    companyPlaceholder: "e.g. Stride Physical Therapy",
-    selectPlaceholder: "We need a...",
+  
+  "rural-nursing-home": {
+    title: "Rural Nursing Home Staffing",
+    metaDescription: "Staff your rural nursing home with compassionate CNAs and RNs.",
+    headline: "Find dependable <em>Nursing Home</em> staff today",
+    subtext: "We help rural facilities hire CNAs, RNs, and LPNs with experience in long-term care.",
+    companyPlaceholder: "Facility Name",
+    selectPlaceholder: "What role are you hiring for?",
     selectOptions: [
-      { value: "pt", label: "Physical Therapist (PT)" },
-      { value: "pta", label: "Physical Therapist Assistant (PTA)" },
-      { value: "aide", label: "Rehab Aide" }
+      { value: "cna", label: "Certified Nursing Assistant" },
+      { value: "rn", label: "Registered Nurse" },
+      { value: "lpn", label: "Licensed Practical Nurse" }
+    ],
+    ctaText: "Get Nursing Staff",
+    formNote: "We prioritize availability in rural counties.",
+    pricingTitle: "Staffing Packages",
+    pricing: [
+      {
+        title: "Starter",
+        price: "$899/mo",
+        description: "Great for facilities under 50 beds",
+        features: ["Unlimited job posts", "Rural sourcing priority", "Text/email alerts"]
+      },
+      {
+        title: "Complete",
+        price: "$1799/mo",
+        description: "Comprehensive support",
+        features: ["3+ hires/mo", "Auto-matching", "Retention analytics"]
+      }
+    ],
+    exampleCandidate: {
+      name: "Luis Ortega",
+      role: "Certified Nursing Assistant",
+      location: "Great Bend, KS",
+      image: "/images/luis-ortega.jpg",
+      bio: "Luis has served in skilled nursing for 5 years. Known for his bedside manner and reliability, he’s completed over 1,200 hours of dementia care support and regularly volunteers at the local VA."
+    }
+  },
+
+  "dental-office": {
+    title: "Dental Staffing Made Simple",
+    metaDescription: "Fast-track hiring for dental assistants, hygienists, and front desk staff.",
+    headline: "Quickly staff your <em>Dental Office</em>",
+    subtext: "Whether you need temp hygienists or full-time front office coordinators, we can help.",
+    companyPlaceholder: "Practice Name",
+    selectPlaceholder: "Role you're hiring for",
+    selectOptions: [
+      { value: "assistant", label: "Dental Assistant" },
+      { value: "hygienist", label: "Dental Hygienist" },
+      { value: "admin", label: "Front Office" }
+    ],
+    ctaText: "Find Dental Candidates",
+    formNote: "Temp and perm options available.",
+    pricingTitle: "Dental Hiring Tiers",
+    pricing: [
+      {
+        title: "Essentials",
+        price: "$750/mo",
+        description: "Basic staffing help",
+        features: ["Up to 2 active listings", "Weekly match emails"]
+      },
+      {
+        title: "Premium",
+        price: "$1250/mo",
+        description: "High-volume clinics",
+        features: ["Priority listing", "Candidate texting", "CRM export"]
+      }
+    ],
+    exampleCandidate: {
+      name: "Kim Tran",
+      role: "Dental Hygienist",
+      location: "Fresno, CA",
+      image: "/images/kim-tran.jpg",
+      bio: "Kim has over 10 years of experience in general and pediatric dentistry. She’s known for her patient communication skills and speed, performing 14+ cleanings/day at her last clinic."
+    }
+  },
+
+  "physical-therapy": {
+    title: "Physical Therapy Staffing",
+    metaDescription: "Hire PTs and PTAs to keep your caseload moving.",
+    headline: "Grow your <em>PT practice</em> without the staffing headaches",
+    subtext: "We match physical therapy providers with DPTs, aides, and front office talent.",
+    companyPlaceholder: "Clinic or Rehab Center Name",
+    selectPlaceholder: "Who do you need to hire?",
+    selectOptions: [
+      { value: "pt", label: "Physical Therapist" },
+      { value: "pta", label: "PT Assistant" },
+      { value: "admin", label: "Clinic Admin" }
     ],
     ctaText: "Get PT Candidates",
-    pricingTitle: "Pricing for All Facility Sizes",
+    formNote: "Turnaround within 2 business days.",
+    pricingTitle: "Flexible Plans",
     pricing: [
       {
-        title: "Rehab Essentials",
-        price: "$109/mo",
-        description: "Great for short-term or part-time hiring",
-        features: ["5 hires/mo", "Resume database", "Dedicated rep"]
+        title: "Lite",
+        price: "$600/mo",
+        description: "Solo & small practices",
+        features: ["Candidate inbox", "2 hires/mo"]
       },
       {
-        title: "Therapy Growth Plan",
-        price: "$239/mo",
-        description: "Best for expanding outpatient clinics",
-        features: ["Unlimited hires", "Candidate alerts", "Scheduling help"]
+        title: "Growth",
+        price: "$1100/mo",
+        description: "Multi-location clinics",
+        features: ["4+ hires", "Onboarding tracking", "Dedicated rep"]
       }
     ],
-    formNote: "*Onboard faster with credentialed staff.",
     exampleCandidate: {
-      name: "Jasmine Wells",
-      role: "Physical Therapist Assistant",
-      location: "Manhattan, KS",
-      image: "/images/personas/jasmine.png",
-      bio: "Jasmine is a licensed PTA with 5 years experience in outpatient and SNF settings. Passionate about mobility improvement and patient education. Uses WebPT and Therabill daily."
+      name: "Jason Miller",
+      role: "Doctor of Physical Therapy",
+      location: "Spokane, WA",
+      image: "/images/jason-miller.jpg",
+      bio: "Jason has practiced for 6 years in outpatient ortho and neuro. He’s trained in dry needling, vestibular rehab, and chronic pain protocols. DPT from Eastern Washington University."
     }
   },
-  "senior-living": {
-    title: "Staff Your Senior Living Community",
-    metaDescription: "Hire caregivers, med techs, and support staff today.",
-    headline: "Your Next <br><span style='color: #067547;'>Senior Care Hire</span> Starts Here",
-    subtext: "Independent and assisted living providers trust us for prompt, reliable staffing help.",
-    companyPlaceholder: "e.g. Willow Glen Living",
-    selectPlaceholder: "We’re looking for a...",
+
+  "urgent-care": {
+    title: "Urgent Care Staffing",
+    metaDescription: "Staff your UC center with flexible, credentialed professionals.",
+    headline: "Staff your <em>Urgent Care</em> center with confidence",
+    subtext: "From reception to mid-levels, we help urgent care clinics stay fully staffed.",
+    companyPlaceholder: "Center Name",
+    selectPlaceholder: "Who do you need?",
     selectOptions: [
-      { value: "caregiver", label: "Caregiver" },
-      { value: "medtech", label: "Medication Technician" },
-      { value: "cook", label: "Cook / Dietary Aide" }
+      { value: "ma", label: "Medical Assistant" },
+      { value: "np", label: "Nurse Practitioner" },
+      { value: "front-desk", label: "Front Desk" }
     ],
-    ctaText: "Hire Senior Living Staff",
-    pricingTitle: "Plans for Growing Communities",
+    ctaText: "Get Urgent Care Help",
+    formNote: "Same-day sourcing available.",
+    pricingTitle: "Urgent Care Plans",
     pricing: [
       {
-        title: "Essential Living",
-        price: "$95/mo",
-        description: "Ideal for part-time hires",
-        features: ["5 hires/mo", "24/7 access", "Onboarding templates"]
+        title: "Fast Start",
+        price: "$900/mo",
+        description: "Fill key roles fast",
+        features: ["2 job slots", "Weekend coverage sourcing"]
       },
       {
-        title: "Full Service Plan",
-        price: "$199/mo",
-        description: "Unlimited access and support",
-        features: ["Unlimited hires", "Profile alerts", "Dedicated success rep"]
+        title: "All-In",
+        price: "$1650/mo",
+        description: "Comprehensive staffing",
+        features: ["Unlimited roles", "Real-time candidate alerts"]
       }
     ],
-    formNote: "*We’ve helped over 100 communities fill roles fast.",
     exampleCandidate: {
-      name: "Grace Kim",
+      name: "Meghan Patel",
+      role: "Nurse Practitioner",
+      location: "Columbus, OH",
+      image: "/images/meghan-patel.jpg",
+      bio: "Meghan has 9 years in acute and urgent care, treating 25–35 patients daily. She is DOT-certified, experienced in pediatric and geriatric triage, and trained in I&D, sutures, and sports injuries."
+    }
+  },
+
+  "senior-living": {
+    title: "Senior Living Staffing",
+    metaDescription: "Reliable caregivers and activity staff for your community.",
+    headline: "Easily hire for <em>Senior Living</em> roles",
+    subtext: "We supply assisted living centers with caregivers, med techs, and concierge staff.",
+    companyPlaceholder: "Community Name",
+    selectPlaceholder: "What type of role?",
+    selectOptions: [
+      { value: "caregiver", label: "Caregiver" },
+      { value: "med-tech", label: "Medication Technician" },
+      { value: "concierge", label: "Concierge / Front Desk" }
+    ],
+    ctaText: "Start Hiring",
+    formNote: "Flexible and full-time roles available.",
+    pricingTitle: "Care Community Plans",
+    pricing: [
+      {
+        title: "Standard",
+        price: "$800/mo",
+        description: "Typical communities",
+        features: ["3 hires/mo", "Basic screening"]
+      },
+      {
+        title: "Enhanced",
+        price: "$1450/mo",
+        description: "Memory care and large orgs",
+        features: ["Behavioral screening", "Live interview scheduling"]
+      }
+    ],
+    exampleCandidate: {
+      name: "Andrea Lewis",
       role: "Medication Technician",
-      location: "Lawrence, KS",
-      image: "/images/personas/grace.png",
-      bio: "Grace has been a med tech for 7 years at multiple assisted living centers. She’s state certified, detail-oriented, and known for her calming demeanor with residents. Comfortable with memory care and hospice coordination."
+      location: "Tucson, AZ",
+      image: "/images/andrea-lewis.jpg",
+      bio: "Andrea has 7 years of experience in assisted living. Certified in medication administration and CPR, she’s known for her calm presence, accuracy, and 100% attendance record in the past 2 years."
     }
   }
-}
+};
+
+export default personas;

@@ -228,4 +228,5 @@ const personas = {
   }
 };
 
+export { personas };
 export default personas;

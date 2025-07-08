@@ -7,8 +7,10 @@ export default function PersonaPage() {
   const router = useRouter()
   const { persona } = router.query
 
-  const personas = Object.values(allPersonas)
-  const personaData = personas.find(p => p.route === persona)
+import allPersonas from '../data/personas'
+
+const personaData = allPersonas[persona]
+
 
   if (!personaData) return <div>Loading...</div>
 

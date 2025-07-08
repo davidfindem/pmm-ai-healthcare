@@ -555,14 +555,14 @@ export default function LandingPageTemplate({ persona }) {
             maxWidth: '1000px',
             margin: '0 auto'
           }}>
-            {persona.pricing.map((plan, index) => (
+            {persona.pricing.map((pricingPlan, index) => (
               <PricingCard 
                 key={index}
-                title={plan.title}
-                price={plan.price}
-                description={plan.description}
-                features={plan.features}
-                featured={plan.featured}
+                title={pricingPlan.title}
+                price={pricingPlan.price}
+                description={pricingPlan.description}
+                features={pricingPlan.features}
+                featured={pricingPlan.featured}
               />
             ))}
           </div>

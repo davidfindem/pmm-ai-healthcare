@@ -1,10 +1,12 @@
+// File: pages/[persona].js
+
 import { useRouter } from 'next/router'
 import LandingPageTemplate from '../components/LandingPageTemplate'
 import { personas } from '../data/personas'
 
 export default function PersonaPage({ persona: personaData }) {
   const router = useRouter()
-  
+
   // If we're in fallback mode or persona data is missing, show loading
   if (router.isFallback || !personaData) {
     return (
@@ -21,35 +23,45 @@ export default function PersonaPage({ persona: personaData }) {
       </div>
     )
   }
-  
+
   return <LandingPageTemplate persona={personaData} />
 }
 
-// This tells Next.js which paths are valid
 export async function getStaticPaths() {
   const paths = Object.keys(personas).map((persona) => ({
     params: { persona }
   }))
-  
+
   return {
     paths,
-    fallback: false // Show 404 for invalid personas
+    fallback: false
   }
 }
 
-// This gets the persona data at build time
 export async function getStaticProps({ params }) {
-  const personaData = personas[params.persona]
-  
+  const personaData = personas[params.persona] || null
+
+  // ✅ FIX: If persona is not found, return notFound to avoid runtime errors
   if (!personaData) {
     return {
       notFound: true
     }
   }
-  
+
+  // ✅ FIX: If plan is expected later, provide a fallback or placeholder
+  const defaultPlan = {
+    name: 'Standard Plan',
+    price: '$99/month',
+    features: ['Basic support', 'Unlimited hires']
+  }
+
+  // Attach the plan safely if it exists
   return {
     props: {
-      persona: personaData
+      persona: {
+        ...personaData,
+        plan: personaData.plan || defaultPlan
+      }
     }
   }
 }

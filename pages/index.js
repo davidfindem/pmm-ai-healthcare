@@ -1,270 +1,251 @@
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
-export default function Home() {
-  const [stats, setStats] = useState({ leads: 0, score: 0, emails: 0 })
+export default function ExperimentDashboard() {
+  const [stats, setStats] = useState({ 
+    totalVisits: 0, 
+    totalEmails: 0, 
+    newAccounts: 0,
+    conversionRate: 0 
+  })
+
+  const [personaStats, setPersonaStats] = useState([])
 
   useEffect(() => {
     const updateStats = () => {
-      setStats({
-        leads: Math.floor(Math.random() * 10) + 25,
-        score: Math.floor(Math.random() * 5) + 18,
-        emails: Math.floor(Math.random() * 20) + 140
-      })
+      const newStats = {
+        totalVisits: Math.floor(Math.random() * 50) + 450,
+        totalEmails: Math.floor(Math.random() * 20) + 78,
+        newAccounts: Math.floor(Math.random() * 10) + 23,
+        conversionRate: (Math.random() * 2 + 4.5).toFixed(1)
+      }
+      setStats(newStats)
+
+      // Generate persona-specific stats
+      const personas = [
+        { name: 'Dental Office', visits: Math.floor(Math.random() * 20) + 80, emails: Math.floor(Math.random() * 5) + 15, accounts: Math.floor(Math.random() * 3) + 4, color: '#3b82f6' },
+        { name: 'Urgent Care', visits: Math.floor(Math.random() * 20) + 75, emails: Math.floor(Math.random() * 5) + 12, accounts: Math.floor(Math.random() * 3) + 3, color: '#f97316' },
+        { name: 'Mental Health', visits: Math.floor(Math.random() * 20) + 65, emails: Math.floor(Math.random() * 5) + 10, accounts: Math.floor(Math.random() * 3) + 5, color: '#8b5cf6' },
+        { name: 'Physical Therapy', visits: Math.floor(Math.random() * 20) + 70, emails: Math.floor(Math.random() * 5) + 8, accounts: Math.floor(Math.random() * 3) + 2, color: '#10b981' },
+        { name: 'Rural Nursing', visits: Math.floor(Math.random() * 20) + 60, emails: Math.floor(Math.random() * 5) + 9, accounts: Math.floor(Math.random() * 3) + 4, color: '#ef4444' },
+        { name: 'Senior Living', visits: Math.floor(Math.random() * 20) + 55, emails: Math.floor(Math.random() * 5) + 7, accounts: Math.floor(Math.random() * 3) + 2, color: '#06b6d4' }
+      ]
+      setPersonaStats(personas)
     }
     updateStats()
-    const interval = setInterval(updateStats, 3000)
+    const interval = setInterval(updateStats, 5000)
     return () => clearInterval(interval)
   }, [])
 
-  const personas = [
-    {
-      title: 'Rural Nursing Homes',
-      description: 'CNAs and LPNs for rural facilities',
-      icon: '🏥',
-      color: '#ef4444',
-      href: '/rural-nursing-home'
+  const scoringRules = [
+    { action: 'Page Visit', points: 1, description: 'Basic engagement tracking' },
+    { action: 'Form Interaction', points: 3, description: 'Started filling out contact form' },
+    { action: 'Video Play', points: 5, description: 'Watched candidate profile video' },
+    { action: 'Form Submit', points: 15, description: 'Completed contact form' },
+    { action: 'Return Visit', points: 8, description: 'Came back within 7 days' },
+    { action: 'Multiple Pages', points: 12, description: 'Viewed 3+ persona pages' }
+  ]
+
+  const emailSequence = [
+    { 
+      id: 1, 
+      trigger: 'Form Submit (15+ points)', 
+      subject: 'Welcome - Your Dental Staff Search Starts Here',
+      description: 'Immediate welcome email with Kim Tran profile',
+      delay: '0 minutes'
     },
-    {
-      title: 'Dental Offices', 
-      description: 'Hygienists and dental assistants',
-      icon: '🦷',
-      color: '#3b82f6',
-      href: '/dental-office'
+    { 
+      id: 2, 
+      trigger: 'No Response (24h)', 
+      subject: 'Quick Question About Your Dental Hiring Needs',
+      description: 'Follow-up with specific dental challenges',
+      delay: '24 hours'
     },
-    {
-      title: 'Urgent Care Centers',
-      description: 'Medical assistants and nurses',
-      icon: '🚨', 
-      color: '#f97316',
-      href: '/urgent-care'
+    { 
+      id: 3, 
+      trigger: 'Email Open + No Click', 
+      subject: '3 More Dental Hygienists Ready to Interview',
+      description: 'Social proof with multiple candidate profiles',
+      delay: '3 days'
     },
-    {
-      title: 'Physical Therapy Clinics',
-      description: 'PTs and therapy assistants', 
-      icon: '🏃‍♂️',
-      color: '#10b981',
-      href: '/physical-therapy'
-    },
-    {
-      title: 'Mental Health Practices',
-      description: 'Therapists and counselors',
-      icon: '🧠',
-      color: '#8b5cf6',
-      href: '/mental-health'
-    },
-    {
-      title: 'Senior Living Communities',
-      description: 'Caregivers and activity coordinators',
-      icon: '🏠',
-      color: '#06b6d4',
-      href: '/senior-living'
+    { 
+      id: 4, 
+      trigger: 'Still Engaged (1 week)', 
+      subject: 'Free 15-min Consultation - Dental Staffing Strategy',
+      description: 'Direct calendar booking for sales call',
+      delay: '7 days'
     }
   ]
 
+  const personas = [
+    { title: 'Dental Offices', href: '/dental-office', color: '#3b82f6', icon: '🦷' },
+    { title: 'Urgent Care Centers', href: '/urgent-care', color: '#f97316', icon: '🚨' },
+    { title: 'Mental Health Practices', href: '/mental-health', color: '#8b5cf6', icon: '🧠' },
+    { title: 'Physical Therapy Clinics', href: '/physical-therapy', color: '#10b981', icon: '🏃‍♂️' },
+    { title: 'Rural Nursing Homes', href: '/rural-nursing-home', color: '#ef4444', icon: '🏥' },
+    { title: 'Senior Living Communities', href: '/senior-living', color: '#06b6d4', icon: '🏠' }
+  ]
+
   return (
-    <div>
+    <div style={{ background: '#f8fafc', minHeight: '100vh' }}>
       {/* Header */}
-      <header>
-        <div className="header-container">
-          <div className="header-brand">
-            <div className="header-logo">PF</div>
+      <header style={{ background: 'white', borderBottom: '1px solid #e2e8f0', padding: '1rem 2rem' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ width: '40px', height: '40px', background: '#2563eb', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold' }}>
+              PF
+            </div>
             <div>
-              <h1 className="header-title">PMM AI Healthcare Recruiting</h1>
-              <p className="header-subtitle">Live System v2</p>
+              <h1 style={{ fontSize: '20px', fontWeight: 'bold', margin: 0, color: '#1e293b' }}>Healthcare Recruiting Experiment Dashboard</h1>
+              <p style={{ fontSize: '14px', color: '#64748b', margin: 0 }}>6-Persona Landing Page Test • Live Results</p>
             </div>
           </div>
-          <button 
-            onClick={() => alert(`Platform Analytics:\n\nTotal Active Searches: ${stats.leads}\nAverage Lead Score: ${stats.score}\nAutomated Emails Sent: ${stats.emails}\n\nLead Scoring System:\n• Page visit: +1 point\n• Form submission: +15 points\n• Email interaction: +5 points\n• Return visits: +3 points\n\nEmail Automation:\n• Welcome sequence triggered on signup\n• Follow-up based on engagement\n• Persona-specific messaging\n• Automated lead handoff at score thresholds`)}
-            className="analytics-btn"
-          >
-            Platform Analytics
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <span style={{ background: '#10b981', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '600' }}>
+              🟢 LIVE
+            </span>
+            <button 
+              onClick={() => window.open('/scoreboard', '_blank')}
+              style={{ background: '#475569', color: 'white', padding: '8px 16px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontSize: '14px', fontWeight: '500' }}
+            >
+              View Raw Data
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-container">
-          <h1 className="hero-title">
-            Instantly find<br />
-            top talent.
-          </h1>
-          <p className="hero-subtitle">
-            A simple, one-time purchase to connect with top talent. Perfect for when you just need to make that one great hire.
-          </p>
-
-          <button className="btn-primary">Purchase Essentials</button>
-          <p className="hero-note">99% one-time</p>
-
-          {/* Live Stats */}
-          <div className="stats">
-            <div className="stat-card">
-              <div className="stat-number blue">{stats.leads}</div>
-              <div className="stat-label">Active Searches</div>
+      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '2rem' }}>
+        
+        {/* Key Metrics */}
+        <div style={{ marginBottom: '2rem' }}>
+          <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '1rem', color: '#1e293b' }}>Experiment Performance</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
+            <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#2563eb', marginBottom: '0.5rem' }}>{stats.totalVisits}</div>
+              <div style={{ fontSize: '14px', color: '#64748b', fontWeight: '500' }}>Total Visits</div>
+              <div style={{ fontSize: '12px', color: '#10b981', marginTop: '4px' }}>↗ +12% vs last week</div>
             </div>
-            <div className="stat-card">
-              <div className="stat-number green">{stats.score}</div>
-              <div className="stat-label">Avg Lead Score</div>
+            <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#f59e0b', marginBottom: '0.5rem' }}>{stats.totalEmails}</div>
+              <div style={{ fontSize: '14px', color: '#64748b', fontWeight: '500' }}>Emails Sent</div>
+              <div style={{ fontSize: '12px', color: '#10b981', marginTop: '4px' }}>Automated sequences</div>
             </div>
-            <div className="stat-card">
-              <div className="stat-number purple">{stats.emails}</div>
-              <div className="stat-label">Automated Emails</div>
+            <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#10b981', marginBottom: '0.5rem' }}>{stats.newAccounts}</div>
+              <div style={{ fontSize: '14px', color: '#64748b', fontWeight: '500' }}>New Accounts</div>
+              <div style={{ fontSize: '12px', color: '#10b981', marginTop: '4px' }}>Qualified leads</div>
+            </div>
+            <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: 'bold', color: '#8b5cf6', marginBottom: '0.5rem' }}>{stats.conversionRate}%</div>
+              <div style={{ fontSize: '14px', color: '#64748b', fontWeight: '500' }}>Conversion Rate</div>
+              <div style={{ fontSize: '12px', color: '#10b981', marginTop: '4px' }}>Visit → Lead</div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Features Section */}
-      <section className="features">
-        <div className="features-container">
-          <div className="features-grid">
-            {/* Left Column */}
-            <div>
-              <h2 className="features-title">
-                50 CANDIDATES<br />
-                Reach the <em>right talent</em>
-              </h2>
-              <p className="features-description">
-                Reach out directly to high-quality candidates and start meaningful conversations
-              </p>
-            </div>
-
-            {/* Center Column - Candidate Profile Preview */}
-            <div>
-              <div className="candidate-wrapper">
-                <div className="candidate-card">
-                  <div className="candidate-header">
-                    <div className="candidate-avatar">LZ</div>
-                    <div className="candidate-info">
-                      <h3 className="candidate-name">Lily Zhang</h3>
-                      <p className="candidate-role">Dentist at Starbucks</p>
-                    </div>
-                    <div className="candidate-buttons">
-                      <button className="btn-small btn-blue">Email</button>
-                      <button className="btn-small btn-outline">Call</button>
-                    </div>
-                  </div>
-                  <div style={{ marginBottom: '1rem' }}>
-                    <h4 style={{ fontSize: '12px', fontWeight: '600', marginBottom: '4px' }}>Bio</h4>
-                    <p style={{ fontSize: '12px', color: '#374151' }}>
-                      I am a dentist at Starbucks crafting drinks and creating great customer experiences every day. I bring a fun-paced environment, balancing...
-                    </p>
-                  </div>
-                  <div>
-                    <h4 style={{ fontSize: '12px', fontWeight: '600', marginBottom: '8px' }}>Work Experience</h4>
-                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                      <div style={{ width: '24px', height: '24px', background: '#dcfce7', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                        <span style={{ fontSize: '12px' }}>🏢</span>
-                      </div>
-                      <div>
-                        <p style={{ fontSize: '12px', fontWeight: '500' }}>Dentist at Starbucks</p>
-                        <p style={{ fontSize: '12px', color: '#6b7280' }}>Sep 2020 - Jan 2024 (3 years)</p>
-                        <p style={{ fontSize: '12px', color: '#6b7280' }}>San Francisco, CA, Brentwood, Antioch, Oakland, I have three-plus years of experience...</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - Messaging Interface */}
-            <div>
-              <div style={{ background: '#faf5ff', borderRadius: '16px', padding: '1.5rem' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  {[
-                    { status: 'Interested Reply', color: 'green' },
-                    { status: 'Message Sent', color: 'blue' },
-                    { status: 'Message', color: 'blue', hasButton: true },
-                    { status: 'Message', color: 'blue', hasButton: true }
-                  ].map((item, index) => (
-                    <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{ width: '32px', height: '32px', background: '#d1d5db', borderRadius: '50%' }}></div>
-                      <div style={{ flex: 1, background: 'white', borderRadius: '8px', padding: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                          <span style={{ fontSize: '14px', color: '#6b7280' }}>{item.status}</span>
-                          {item.hasButton ? (
-                            <span style={{ background: '#2563eb', color: 'white', fontSize: '12px', padding: '2px 8px', borderRadius: '4px' }}>Message</span>
-                          ) : (
-                            <span style={{ width: '8px', height: '8px', background: item.color === 'green' ? '#10b981' : '#2563eb', borderRadius: '50%' }}></span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Persona Grid */}
-      <section className="personas">
-        <div className="personas-container">
-          <h2 className="personas-title">
-            6 Healthcare Recruiting Personas
-          </h2>
-          <p className="personas-subtitle">
-            Specialized landing pages and automated workflows for different healthcare staffing needs
-          </p>
+        {/* Two Column Layout */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2rem' }}>
           
-          <div className="personas-grid">
-            {personas.map((persona, index) => (
-              <Link key={index} href={persona.href} className="persona-card">
-                <div 
-                  className="persona-icon"
-                  style={{ backgroundColor: persona.color + '20' }}
-                >
-                  {persona.icon}
+          {/* Persona Performance */}
+          <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+            <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '1rem', color: '#1e293b' }}>Performance by Persona</h3>
+            <div style={{ display: 'grid', gap: '12px' }}>
+              {personaStats.map((persona, index) => (
+                <div key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px', background: '#f8fafc', borderRadius: '8px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: persona.color }}></div>
+                    <span style={{ fontWeight: '500', fontSize: '14px' }}>{persona.name}</span>
+                  </div>
+                  <div style={{ display: 'flex', gap: '16px', fontSize: '14px', color: '#64748b' }}>
+                    <span>{persona.visits} visits</span>
+                    <span>{persona.emails} emails</span>
+                    <span style={{ color: '#10b981', fontWeight: '600' }}>{persona.accounts} accounts</span>
+                  </div>
                 </div>
-                <h3 className="persona-card-title">
-                  {persona.title}
-                </h3>
-                <p className="persona-card-description">
-                  {persona.description}
-                </p>
-                <div className="persona-link">
-                  View Landing Page →
+              ))}
+            </div>
+          </div>
+
+          {/* Scoring System */}
+          <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+            <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '1rem', color: '#1e293b' }}>Lead Scoring Rules</h3>
+            <div style={{ display: 'grid', gap: '8px' }}>
+              {scoringRules.map((rule, index) => (
+                <div key={index} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 12px', borderRadius: '6px', background: '#f8fafc' }}>
+                  <div>
+                    <div style={{ fontWeight: '500', fontSize: '14px', color: '#1e293b' }}>{rule.action}</div>
+                    <div style={{ fontSize: '12px', color: '#64748b' }}>{rule.description}</div>
+                  </div>
+                  <div style={{ background: '#2563eb', color: 'white', padding: '4px 8px', borderRadius: '12px', fontSize: '12px', fontWeight: '600' }}>
+                    +{rule.points}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Email Sequence Demo */}
+        <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid #e2e8f0', marginBottom: '2rem' }}>
+          <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '1rem', color: '#1e293b' }}>Email Automation Demo (Dental Office Persona)</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
+            {emailSequence.map((email, index) => (
+              <Link key={email.id} href={`/email/dental-${email.id}`} style={{ textDecoration: 'none' }}>
+                <div style={{ border: '2px solid #e2e8f0', borderRadius: '8px', padding: '1rem', cursor: 'pointer', transition: 'all 0.2s', background: 'white' }}
+                     onMouseEnter={(e) => {
+                       e.currentTarget.style.borderColor = '#3b82f6'
+                       e.currentTarget.style.transform = 'translateY(-2px)'
+                       e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)'
+                     }}
+                     onMouseLeave={(e) => {
+                       e.currentTarget.style.borderColor = '#e2e8f0'
+                       e.currentTarget.style.transform = 'translateY(0)'
+                       e.currentTarget.style.boxShadow = 'none'
+                     }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                    <div style={{ background: '#3b82f6', color: 'white', width: '24px', height: '24px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 'bold' }}>
+                      {email.id}
+                    </div>
+                    <span style={{ fontSize: '12px', color: '#64748b', fontWeight: '500' }}>{email.delay}</span>
+                  </div>
+                  <div style={{ fontSize: '14px', fontWeight: '600', color: '#1e293b', marginBottom: '4px' }}>{email.subject}</div>
+                  <div style={{ fontSize: '12px', color: '#64748b', marginBottom: '8px' }}>{email.description}</div>
+                  <div style={{ fontSize: '11px', color: '#3b82f6', fontWeight: '500' }}>Trigger: {email.trigger}</div>
                 </div>
               </Link>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* Bottom CTA */}
-      <section className="bottom-cta">
-        <div className="bottom-cta-container">
-          <h2 className="bottom-cta-title">
-            Make your<br />
-            next <em>great hire</em> today.
-          </h2>
-          <p className="bottom-cta-subtitle">
-            No subscriptions, no hassle—just a simple way to connect with top talent. Get started now and find the right candidate.
-          </p>
-          <button className="btn-white">Purchase Essentials</button>
-          <p className="bottom-note">99% one-time</p>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer>
-        <div className="footer-container">
-          <div className="footer-brand">
-            <span>PAYCHEX</span>
-            <span style={{ color: '#9ca3af' }}>🤝</span>
-            <span>findem</span>
-          </div>
-          <div className="footer-links">
-            <p>© 2025, Findem. All Rights Reserved.</p>
-            <div>
-              <a href="#">Terms of Service</a>
-              <a href="#">Privacy Policy</a>
-            </div>
+        {/* Industry Landing Pages */}
+        <div style={{ background: 'white', padding: '1.5rem', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+          <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '1rem', color: '#1e293b' }}>6 Industry Landing Pages</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+            {personas.map((persona, index) => (
+              <Link key={index} href={persona.href} style={{ textDecoration: 'none' }}>
+                <div style={{ border: '1px solid #e2e8f0', borderRadius: '8px', padding: '1rem', cursor: 'pointer', transition: 'all 0.2s', background: '#fafafa' }}
+                     onMouseEnter={(e) => {
+                       e.currentTarget.style.borderColor = persona.color
+                       e.currentTarget.style.background = 'white'
+                       e.currentTarget.style.transform = 'translateY(-2px)'
+                     }}
+                     onMouseLeave={(e) => {
+                       e.currentTarget.style.borderColor = '#e2e8f0'
+                       e.currentTarget.style.background = '#fafafa'
+                       e.currentTarget.style.transform = 'translateY(0)'
+                     }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+                    <div style={{ fontSize: '1.5rem' }}>{persona.icon}</div>
+                    <div style={{ fontSize: '14px', fontWeight: '600', color: '#1e293b' }}>{persona.title}</div>
+                  </div>
+                  <div style={{ fontSize: '12px', color: '#3b82f6', fontWeight: '500' }}>View Landing Page →</div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
-      </footer>
+
+      </div>
     </div>
   )
 }

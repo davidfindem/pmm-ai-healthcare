@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function LandingPageTemplate({ persona }) {
   const {
@@ -18,18 +19,18 @@ export default function LandingPageTemplate({ persona }) {
       {/* Header */}
       <header style={{ borderBottom: '1px solid #e5e7eb', padding: '1rem 1.5rem' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ width: '32px', height: '32px', background: '#2563eb', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '14px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div style={{ width: '32px', height: '32px', background: '#3b82f6', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '16px' }}>
               PF
             </div>
-            <span style={{ fontSize: '20px', fontWeight: '600', color: '#1e293b' }}>Paychex Findem</span>
+            <span style={{ fontSize: '18px', fontWeight: '600', color: '#1e293b' }}>Findem</span>
           </div>
           <nav style={{ display: 'flex', alignItems: 'center', gap: '2rem', fontSize: '14px' }}>
-            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Features</a>
-            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Pricing</a>
-            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>FAQ</a>
-            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Log in</a>
-            <button style={{ background: '#000', color: 'white', padding: '8px 16px', borderRadius: '6px', border: 'none', fontSize: '14px', fontWeight: '500', cursor: 'pointer' }}>
+            <a href="#" style={{ color: '#64748b', textDecoration: 'none', fontWeight: '500' }}>Features</a>
+            <a href="#" style={{ color: '#64748b', textDecoration: 'none', fontWeight: '500' }}>Pricing</a>
+            <a href="#" style={{ color: '#64748b', textDecoration: 'none', fontWeight: '500' }}>FAQ</a>
+            <a href="#" style={{ color: '#64748b', textDecoration: 'none', fontWeight: '500' }}>Log in</a>
+            <button style={{ background: '#000', color: 'white', padding: '8px 16px', borderRadius: '6px', border: 'none', fontSize: '14px', fontWeight: '600', cursor: 'pointer' }}>
               Sign up
             </button>
           </nav>
@@ -37,47 +38,50 @@ export default function LandingPageTemplate({ persona }) {
       </header>
 
       {/* Main Content */}
-      <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '4rem 1.5rem' }}>
+      <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '3rem 1.5rem' }}>
+        
         {/* Hero Section */}
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <h1 
-            style={{ fontSize: '3.75rem', fontWeight: 'bold', color: '#1e293b', marginBottom: '1.5rem', lineHeight: '1.1' }}
+            style={{ fontSize: '4rem', fontWeight: 'bold', color: '#1e293b', marginBottom: '1rem', lineHeight: '1.1' }}
             dangerouslySetInnerHTML={{ __html: headline.replace('<em>', '<span style="color: #000;">').replace('</em>', '</span>') }}
           />
-          <p style={{ fontSize: '1.25rem', color: '#64748b', marginBottom: '2rem', maxWidth: '640px', margin: '0 auto 2rem auto', lineHeight: '1.6' }}>
+          <p style={{ fontSize: '1.25rem', color: '#64748b', marginBottom: '2rem', maxWidth: '600px', margin: '0 auto 2rem auto', lineHeight: '1.5' }}>
             {subtext}
           </p>
-          <button style={{ background: '#000', color: 'white', padding: '1rem 2rem', borderRadius: '8px', fontSize: '18px', fontWeight: '600', border: 'none', cursor: 'pointer', marginBottom: '0.75rem' }}>
+          <button style={{ background: '#000', color: 'white', padding: '12px 32px', borderRadius: '8px', fontSize: '16px', fontWeight: '600', border: 'none', cursor: 'pointer', marginBottom: '0.5rem' }}>
             {ctaText}
           </button>
-          <p style={{ fontSize: '14px', color: '#64748b' }}>{formNote}</p>
+          <p style={{ fontSize: '14px', color: '#64748b' }}>99% one-time</p>
         </div>
 
         {/* Two Column Layout */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start', marginBottom: '6rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: '4rem', alignItems: 'start', marginBottom: '4rem' }}>
+          
           {/* Left Column - Candidate Profile */}
           <div style={{ background: 'linear-gradient(135deg, #dbeafe 0%, #c7d2fe 100%)', borderRadius: '16px', padding: '2rem' }}>
             <div style={{ background: 'white', borderRadius: '12px', padding: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+              
               {/* Candidate Header */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div style={{ position: 'relative' }}>
                   <div style={{ width: '64px', height: '64px', background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '1.5rem' }}>
                     {exampleCandidate.name.split(' ').map(n => n[0]).join('')}
                   </div>
-                  <div style={{ position: 'absolute', bottom: '-2px', right: '-2px', width: '24px', height: '24px', background: '#10b981', borderRadius: '50%', border: '2px solid white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ color: 'white', fontSize: '12px' }}>✓</span>
+                  <div style={{ position: 'absolute', bottom: '-2px', right: '-2px', width: '20px', height: '20px', background: '#10b981', borderRadius: '50%', border: '2px solid white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ color: 'white', fontSize: '10px' }}>✓</span>
                   </div>
                 </div>
                 <div style={{ flex: 1 }}>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1e293b', margin: '0 0 4px 0' }}>{exampleCandidate.name}</h3>
-                  <p style={{ color: '#2563eb', fontWeight: '500', margin: '0 0 4px 0' }}>{exampleCandidate.role}</p>
+                  <p style={{ color: '#3b82f6', fontWeight: '600', margin: '0 0 4px 0', fontSize: '14px' }}>{exampleCandidate.role}</p>
                   <p style={{ color: '#64748b', fontSize: '14px', margin: 0 }}>{exampleCandidate.location}</p>
                 </div>
                 <div style={{ display: 'flex', gap: '8px' }}>
-                  <button style={{ background: '#2563eb', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '14px', fontWeight: '500', border: 'none', cursor: 'pointer' }}>
+                  <button style={{ background: '#3b82f6', color: 'white', padding: '8px 16px', borderRadius: '6px', fontSize: '14px', fontWeight: '500', border: 'none', cursor: 'pointer' }}>
                     Email
                   </button>
-                  <button style={{ border: '1px solid #d1d5db', color: '#374151', background: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '14px', fontWeight: '500', cursor: 'pointer' }}>
+                  <button style={{ border: '1px solid #d1d5db', color: '#374151', background: 'white', padding: '8px 16px', borderRadius: '6px', fontSize: '14px', fontWeight: '500', cursor: 'pointer' }}>
                     Call
                   </button>
                 </div>
@@ -93,13 +97,13 @@ export default function LandingPageTemplate({ persona }) {
               <div>
                 <h4 style={{ fontSize: '14px', fontWeight: '600', color: '#1e293b', marginBottom: '12px' }}>Work Experience</h4>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                  <div style={{ width: '32px', height: '32px', background: '#dcfce7', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <span style={{ color: '#16a34a', fontSize: '14px' }}>🏥</span>
+                  <div style={{ width: '32px', height: '32px', background: '#10b981', borderRadius: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <span style={{ color: 'white', fontSize: '16px' }}>🏥</span>
                   </div>
                   <div>
-                    <p style={{ fontSize: '14px', fontWeight: '500', color: '#1e293b', margin: '0 0 4px 0' }}>{exampleCandidate.role}</p>
-                    <p style={{ fontSize: '12px', color: '#64748b', margin: '0 0 4px 0' }}>Previous Healthcare Facility • 2019 - 2024</p>
-                    <p style={{ fontSize: '12px', color: '#64748b', margin: 0 }}>Specialized in patient care with exceptional performance metrics and team collaboration.</p>
+                    <p style={{ fontSize: '14px', fontWeight: '600', color: '#1e293b', margin: '0 0 4px 0' }}>{exampleCandidate.role}</p>
+                    <p style={{ fontSize: '13px', color: '#64748b', margin: '0 0 4px 0' }}>Previous Healthcare Facility • 2019 - 2024 (5 years)</p>
+                    <p style={{ fontSize: '13px', color: '#64748b', margin: 0 }}>Specialized in patient care with exceptional performance metrics and team collaboration.</p>
                   </div>
                 </div>
               </div>
@@ -119,31 +123,32 @@ export default function LandingPageTemplate({ persona }) {
 
           {/* Right Column - Contact Form */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            
             {/* Contact Form */}
             <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <input 
-                  style={{ border: '1px solid #d1d5db', borderRadius: '8px', padding: '12px 16px', fontSize: '14px', outline: 'none' }} 
+                  style={{ border: '1px solid #d1d5db', borderRadius: '6px', padding: '12px', fontSize: '14px', outline: 'none', background: 'white' }} 
                   placeholder="First Name" 
                 />
                 <input 
-                  style={{ border: '1px solid #d1d5db', borderRadius: '8px', padding: '12px 16px', fontSize: '14px', outline: 'none' }} 
+                  style={{ border: '1px solid #d1d5db', borderRadius: '6px', padding: '12px', fontSize: '14px', outline: 'none', background: 'white' }} 
                   placeholder="Last Name" 
                 />
               </div>
               <input 
-                style={{ border: '1px solid #d1d5db', borderRadius: '8px', padding: '12px 16px', fontSize: '14px', outline: 'none' }} 
+                style={{ border: '1px solid #d1d5db', borderRadius: '6px', padding: '12px', fontSize: '14px', outline: 'none', background: 'white' }} 
                 placeholder="Email" 
               />
               <input 
-                style={{ border: '1px solid #d1d5db', borderRadius: '8px', padding: '12px 16px', fontSize: '14px', outline: 'none' }} 
+                style={{ border: '1px solid #d1d5db', borderRadius: '6px', padding: '12px', fontSize: '14px', outline: 'none', background: 'white' }} 
                 placeholder="Phone" 
               />
               <input 
-                style={{ border: '1px solid #d1d5db', borderRadius: '8px', padding: '12px 16px', fontSize: '14px', outline: 'none' }} 
+                style={{ border: '1px solid #d1d5db', borderRadius: '6px', padding: '12px', fontSize: '14px', outline: 'none', background: 'white' }} 
                 placeholder={persona.companyPlaceholder} 
               />
-              <select style={{ border: '1px solid #d1d5db', borderRadius: '8px', padding: '12px 16px', fontSize: '14px', outline: 'none', color: '#374151' }}>
+              <select style={{ border: '1px solid #d1d5db', borderRadius: '6px', padding: '12px', fontSize: '14px', outline: 'none', color: '#374151', background: 'white' }}>
                 <option>{selectPlaceholder}</option>
                 {selectOptions.map((opt) => (
                   <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -151,60 +156,83 @@ export default function LandingPageTemplate({ persona }) {
               </select>
               <button
                 type="submit"
-                style={{ background: '#2563eb', color: 'white', padding: '12px', borderRadius: '8px', fontSize: '16px', fontWeight: '600', border: 'none', cursor: 'pointer' }}
+                style={{ background: '#3b82f6', color: 'white', padding: '14px', borderRadius: '6px', fontSize: '16px', fontWeight: '600', border: 'none', cursor: 'pointer' }}
               >
                 {ctaText}
               </button>
             </form>
 
-            {/* Message Interface Mockup */}
+            {/* Message Interface */}
             <div style={{ background: '#faf5ff', borderRadius: '12px', padding: '1.5rem' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {[
-                  { status: 'Interested Reply', color: '#10b981' },
-                  { status: 'Message Sent', color: '#2563eb' },
-                  { status: 'Message', color: '#2563eb', hasButton: true },
-                  { status: 'Message', color: '#2563eb', hasButton: true }
-                ].map((item, index) => (
-                  <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{ width: '32px', height: '32px', background: '#d1d5db', borderRadius: '50%' }}></div>
-                    <div style={{ flex: 1, background: 'white', borderRadius: '8px', padding: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                        <span style={{ fontSize: '14px', color: '#64748b' }}>{item.status}</span>
-                        {item.hasButton ? (
-                          <span style={{ background: '#2563eb', color: 'white', fontSize: '12px', padding: '4px 8px', borderRadius: '4px' }}>Message</span>
-                        ) : (
-                          <span style={{ width: '8px', height: '8px', background: item.color, borderRadius: '50%' }}></span>
-                        )}
-                      </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ width: '32px', height: '32px', background: '#d1d5db', borderRadius: '50%' }}></div>
+                  <div style={{ flex: 1, background: 'white', borderRadius: '8px', padding: '10px 12px', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span style={{ fontSize: '14px', color: '#64748b' }}>Interested Reply</span>
+                      <div style={{ width: '8px', height: '8px', background: '#10b981', borderRadius: '50%' }}></div>
                     </div>
                   </div>
-                ))}
+                </div>
+                
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ width: '32px', height: '32px', background: '#d1d5db', borderRadius: '50%' }}></div>
+                  <div style={{ flex: 1, background: 'white', borderRadius: '8px', padding: '10px 12px', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span style={{ fontSize: '14px', color: '#64748b' }}>Message Sent</span>
+                      <div style={{ width: '8px', height: '8px', background: '#3b82f6', borderRadius: '50%' }}></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ width: '32px', height: '32px', background: '#d1d5db', borderRadius: '50%' }}></div>
+                  <div style={{ flex: 1, background: 'white', borderRadius: '8px', padding: '10px 12px', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span style={{ fontSize: '14px', color: '#64748b' }}>Message</span>
+                      <span style={{ background: '#3b82f6', color: 'white', fontSize: '11px', padding: '3px 8px', borderRadius: '12px', fontWeight: '500' }}>Message</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ width: '32px', height: '32px', background: '#d1d5db', borderRadius: '50%' }}></div>
+                  <div style={{ flex: 1, background: 'white', borderRadius: '8px', padding: '10px 12px', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span style={{ fontSize: '14px', color: '#64748b' }}>Message</span>
+                      <span style={{ background: '#3b82f6', color: 'white', fontSize: '11px', padding: '3px 8px', borderRadius: '12px', fontWeight: '500' }}>Message</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Integration Section */}
-            <div style={{ background: '#eff6ff', borderRadius: '12px', padding: '1.5rem' }}>
-              <h4 style={{ fontSize: '18px', fontWeight: '600', color: '#1e293b', marginBottom: '12px' }}>EMAIL INTEGRATION</h4>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#1e293b', marginBottom: '12px' }}>
+            {/* Email Integration */}
+            <div style={{ background: '#dbeafe', borderRadius: '12px', padding: '1.5rem' }}>
+              <h4 style={{ fontSize: '14px', fontWeight: '700', color: '#1e293b', marginBottom: '8px', letterSpacing: '0.5px' }}>EMAIL INTEGRATION</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#1e293b', marginBottom: '8px' }}>
                 Keep talent <span style={{ fontStyle: 'italic' }}>engaged</span>
               </h3>
-              <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '1rem' }}>
+              <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '1rem', lineHeight: '1.4' }}>
                 Engage and track candidates directly from your inbox—no need to switch platforms
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <div style={{ background: 'white', borderRadius: '8px', padding: '12px', border: '1px solid #d1d5db', cursor: 'pointer' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <span style={{ color: '#2563eb' }}>📧</span>
-                    <span style={{ fontSize: '14px', fontWeight: '500' }}>Sign in with Google</span>
-                    <span style={{ marginLeft: 'auto' }}>→</span>
+                <div style={{ background: 'white', borderRadius: '8px', padding: '12px', border: '1px solid #cbd5e1', cursor: 'pointer', transition: 'all 0.2s' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ fontSize: '16px' }}>📧</span>
+                      <span style={{ fontSize: '14px', fontWeight: '500', color: '#1e293b' }}>Sign in with Google</span>
+                    </div>
+                    <span style={{ color: '#64748b' }}>→</span>
                   </div>
                 </div>
-                <div style={{ background: 'white', borderRadius: '8px', padding: '12px', border: '1px solid #d1d5db', cursor: 'pointer' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <span style={{ color: '#2563eb' }}>📨</span>
-                    <span style={{ fontSize: '14px', fontWeight: '500' }}>Sign in with Microsoft</span>
-                    <span style={{ marginLeft: 'auto' }}>→</span>
+                <div style={{ background: 'white', borderRadius: '8px', padding: '12px', border: '1px solid #cbd5e1', cursor: 'pointer', transition: 'all 0.2s' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span style={{ fontSize: '16px' }}>📨</span>
+                      <span style={{ fontSize: '14px', fontWeight: '500', color: '#1e293b' }}>Sign in with Microsoft</span>
+                    </div>
+                    <span style={{ color: '#64748b' }}>→</span>
                   </div>
                 </div>
               </div>
@@ -212,62 +240,44 @@ export default function LandingPageTemplate({ persona }) {
           </div>
         </div>
 
-        {/* Pricing Section */}
-        <section style={{ marginTop: '6rem' }}>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', textAlign: 'center', color: '#1e293b', marginBottom: '3rem' }}>{pricingTitle}</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', maxWidth: '1024px', margin: '0 auto' }}>
-            {pricing.map((tier) => (
-              <div
-                key={tier.title}
-                style={{ border: '1px solid #d1d5db', borderRadius: '16px', padding: '2rem', background: 'white', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}
-              >
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '12px', color: '#1e293b' }}>{tier.title}</h3>
-                <p style={{ fontSize: '1.875rem', fontWeight: 'bold', color: '#2563eb', marginBottom: '8px' }}>{tier.price}</p>
-                <p style={{ color: '#64748b', marginBottom: '1.5rem' }}>{tier.description}</p>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                  {tier.features.map((feature, index) => (
-                    <li key={index} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-                      <span style={{ width: '20px', height: '20px', background: '#dcfce7', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                        <span style={{ color: '#16a34a', fontSize: '12px' }}>✓</span>
-                      </span>
-                      <span style={{ fontSize: '14px' }}>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* Bottom CTA */}
-        <section style={{ marginTop: '6rem', background: '#000', borderRadius: '16px', padding: '3rem', textAlign: 'center', color: 'white' }}>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-            Make your next <span style={{ fontStyle: 'italic' }}>great hire</span> today.
+        <section style={{ background: '#000', borderRadius: '16px', padding: '4rem 2rem', textAlign: 'center', color: 'white' }}>
+          <h2 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '1rem', lineHeight: '1.1' }}>
+            Make your<br />
+            next <span style={{ fontStyle: 'italic' }}>great hire</span> today.
           </h2>
-          <p style={{ fontSize: '1.25rem', color: '#d1d5db', marginBottom: '2rem', maxWidth: '640px', margin: '0 auto 2rem auto' }}>
+          <p style={{ fontSize: '1.25rem', color: '#d1d5db', marginBottom: '2rem', maxWidth: '600px', margin: '0 auto 2rem auto', lineHeight: '1.5' }}>
             No subscriptions, no hassle—just a simple way to connect with top talent. Get started now and find the right candidate.
           </p>
-          <button style={{ background: 'white', color: '#000', padding: '1rem 2rem', borderRadius: '8px', fontSize: '18px', fontWeight: '600', border: 'none', cursor: 'pointer', marginBottom: '1rem' }}>
+          <button style={{ background: 'white', color: '#000', padding: '12px 32px', borderRadius: '8px', fontSize: '16px', fontWeight: '600', border: 'none', cursor: 'pointer', marginBottom: '0.5rem' }}>
             {ctaText}
           </button>
           <p style={{ color: '#9ca3af', fontSize: '14px' }}>99% one-time</p>
         </section>
+
+        {/* Back to Dashboard Link */}
+        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+          <Link href="/" style={{ color: '#3b82f6', textDecoration: 'none', fontSize: '14px', fontWeight: '500' }}>
+            ← Back to Experiment Dashboard
+          </Link>
+        </div>
+
       </main>
 
       {/* Footer */}
-      <footer style={{ borderTop: '1px solid #e5e7eb', padding: '2rem 0', marginTop: '4rem' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '2rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontWeight: 'bold' }}>PAYCHEX</span>
-            <span style={{ color: '#9ca3af' }}>🤝</span>
-            <span style={{ fontWeight: 'bold' }}>findem</span>
+      <footer style={{ borderTop: '1px solid #e5e7eb', padding: '2rem 0', marginTop: '3rem' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem', textAlign: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '1rem' }}>
+            <span style={{ fontWeight: 'bold', fontSize: '18px' }}>PAYCHEX</span>
+            <span style={{ color: '#9ca3af', fontSize: '18px' }}>🤝</span>
+            <span style={{ fontWeight: 'bold', fontSize: '18px' }}>findem</span>
           </div>
-        </div>
-        <div style={{ textAlign: 'center', color: '#64748b', fontSize: '14px', marginTop: '1rem' }}>
-          <p style={{ marginBottom: '1rem' }}>© 2025, Findem. All Rights Reserved.</p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem' }}>
-            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Terms of Service</a>
-            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Privacy Policy</a>
+          <div style={{ color: '#64748b', fontSize: '14px' }}>
+            <p style={{ marginBottom: '0.5rem' }}>© 2025, Findem. All Rights Reserved.</p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
+              <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Terms of Service</a>
+              <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Privacy Policy</a>
+            </div>
           </div>
         </div>
       </footer>

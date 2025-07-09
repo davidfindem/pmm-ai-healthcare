@@ -33,7 +33,7 @@ const personas = {
       name: "Sarah Mitchell",
       role: "Licensed Clinical Social Worker",
       location: "Portland, OR",
-      image: "/images/sarah-mitchell.jpg",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face",
       bio: "Sarah is a licensed clinical social worker with 8+ years specializing in trauma-informed therapy and substance abuse recovery. She has extensive experience in both individual and group therapy settings, with particular expertise in CBT and EMDR techniques. Sarah has worked in community mental health centers and private practice, serving diverse populations including veterans and adolescents."
     }
   },
@@ -72,7 +72,7 @@ const personas = {
       name: "Maria Rodriguez",
       role: "Certified Nursing Assistant",
       location: "Great Bend, KS",
-      image: "/images/maria-rodriguez.jpg",
+      image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=200&h=200&fit=crop&crop=face",
       bio: "Maria is a certified nursing assistant with 6+ years of experience in long-term care facilities. She specializes in dementia and Alzheimer's care, with certifications in CPR and first aid. Maria is known for her compassionate bedside manner and has received multiple resident and family commendations. She has experience with electronic health records and medication assistance protocols."
     }
   },
@@ -111,7 +111,7 @@ const personas = {
       name: "Kim Tran",
       role: "Dental Hygienist",
       location: "Fresno, CA",
-      image: "/images/kim-tran.jpg",
+      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&h=200&fit=crop&crop=face",
       bio: "Kim has over 10 years of experience in general and pediatric dentistry. She's known for her patient communication skills and speed, performing 14+ cleanings/day at her last clinic. Kim is certified in local anesthesia administration and has experience with digital radiography, periodontal therapy, and patient education. She's proficient with Dentrix and Eaglesoft practice management systems."
     }
   },
@@ -150,7 +150,7 @@ const personas = {
       name: "Jason Miller",
       role: "Doctor of Physical Therapy",
       location: "Spokane, WA", 
-      image: "/images/jason-miller.jpg",
+      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&h=200&fit=crop&crop=face",
       bio: "Jason has practiced for 7 years specializing in outpatient orthopedics and sports medicine. He's certified in dry needling, manual therapy, and functional movement screening. Jason has experience treating post-surgical patients, athletes, and chronic pain conditions. He holds a DPT from Eastern Washington University and maintains continuing education in the latest evidence-based treatment techniques."
     }
   },
@@ -189,7 +189,7 @@ const personas = {
       name: "Meghan Patel",
       role: "Nurse Practitioner",
       location: "Columbus, OH",
-      image: "/images/meghan-patel.jpg",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face",
       bio: "Meghan has 9 years in acute and urgent care, treating 25–35 patients daily. She is DOT-certified, experienced in pediatric and geriatric triage, and trained in I&D, sutures, and sports injuries. Meghan has experience with Epic and Cerner EHR systems and maintains certifications in ACLS and PALS. She's skilled in point-of-care testing and minor procedures."
     }
   },
@@ -228,7 +228,7 @@ const personas = {
       name: "Andrea Lewis",
       role: "Medication Technician",
       location: "Tucson, AZ",
-      image: "/images/andrea-lewis.jpg",
+      image: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=200&h=200&fit=crop&crop=face",
       bio: "Andrea has 7 years of experience in assisted living and memory care. Certified in medication administration and CPR, she's known for her calm presence, accuracy, and exceptional attendance record. Andrea has experience with electronic medication administration records (eMAR) and has specialized training in dementia care and fall prevention protocols."
     }
   }

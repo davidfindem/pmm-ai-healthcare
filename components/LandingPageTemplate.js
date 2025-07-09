@@ -65,7 +65,30 @@ export default function LandingPageTemplate({ persona }) {
               {/* Candidate Header */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div style={{ position: 'relative' }}>
-                  <div style={{ width: '64px', height: '64px', background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '1.5rem' }}>
+                  {exampleCandidate.image ? (
+                    <img 
+                      src={exampleCandidate.image} 
+                      alt={exampleCandidate.name}
+                      style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover' }}
+                      onError={(e) => {
+                        // Fallback to initials if image fails to load
+                        e.target.style.display = 'none';
+                        e.target.nextElementSibling.style.display = 'flex';
+                      }}
+                    />
+                  ) : null}
+                  <div style={{ 
+                    width: '64px', 
+                    height: '64px', 
+                    background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', 
+                    borderRadius: '50%', 
+                    display: exampleCandidate.image ? 'none' : 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    color: 'white', 
+                    fontWeight: 'bold', 
+                    fontSize: '1.5rem' 
+                  }}>
                     {exampleCandidate.name.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div style={{ position: 'absolute', bottom: '-2px', right: '-2px', width: '20px', height: '20px', background: '#10b981', borderRadius: '50%', border: '2px solid white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -161,51 +184,6 @@ export default function LandingPageTemplate({ persona }) {
                 {ctaText}
               </button>
             </form>
-
-            {/* Message Interface */}
-            <div style={{ background: '#faf5ff', borderRadius: '12px', padding: '1.5rem' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ width: '32px', height: '32px', background: '#d1d5db', borderRadius: '50%' }}></div>
-                  <div style={{ flex: 1, background: 'white', borderRadius: '8px', padding: '10px 12px', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <span style={{ fontSize: '14px', color: '#64748b' }}>Interested Reply</span>
-                      <div style={{ width: '8px', height: '8px', background: '#10b981', borderRadius: '50%' }}></div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ width: '32px', height: '32px', background: '#d1d5db', borderRadius: '50%' }}></div>
-                  <div style={{ flex: 1, background: 'white', borderRadius: '8px', padding: '10px 12px', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <span style={{ fontSize: '14px', color: '#64748b' }}>Message Sent</span>
-                      <div style={{ width: '8px', height: '8px', background: '#3b82f6', borderRadius: '50%' }}></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ width: '32px', height: '32px', background: '#d1d5db', borderRadius: '50%' }}></div>
-                  <div style={{ flex: 1, background: 'white', borderRadius: '8px', padding: '10px 12px', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <span style={{ fontSize: '14px', color: '#64748b' }}>Message</span>
-                      <span style={{ background: '#3b82f6', color: 'white', fontSize: '11px', padding: '3px 8px', borderRadius: '12px', fontWeight: '500' }}>Message</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ width: '32px', height: '32px', background: '#d1d5db', borderRadius: '50%' }}></div>
-                  <div style={{ flex: 1, background: 'white', borderRadius: '8px', padding: '10px 12px', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <span style={{ fontSize: '14px', color: '#64748b' }}>Message</span>
-                      <span style={{ background: '#3b82f6', color: 'white', fontSize: '11px', padding: '3px 8px', borderRadius: '12px', fontWeight: '500' }}>Message</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             {/* Email Integration */}
             <div style={{ background: '#dbeafe', borderRadius: '12px', padding: '1.5rem' }}>

@@ -1,27 +1,22 @@
-import React from 'react'
+// components/PricingCard.js
+
+import React from 'react';
 
 export default function PricingCard({ title, price, description, features, featured = false }) {
   return (
     <div
-      style={{
-        border: featured ? '2px solid #0070f3' : '1px solid #ccc',
-        borderRadius: '12px',
-        padding: '1.5rem',
-        backgroundColor: featured ? '#f0f8ff' : '#fff',
-        boxShadow: featured ? '0 4px 10px rgba(0, 112, 243, 0.2)' : 'none',
-        marginBottom: '1.5rem'
-      }}
+      className={`rounded-xl p-6 bg-white transition shadow-sm hover:shadow-md border ${
+        featured ? 'border-blue-600 bg-blue-50' : 'border-gray-200'
+      }`}
     >
-      <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{title}</h3>
-      <p style={{ fontWeight: 'bold', margin: 0 }}>{price}</p>
-      <p style={{ marginBottom: '1rem', color: '#555' }}>{description}</p>
-      <ul style={{ paddingLeft: '1.2rem' }}>
+      <h3 className="text-xl font-bold mb-2 text-gray-800">{title}</h3>
+      <p className="text-lg font-semibold text-blue-600 mb-1">{price}</p>
+      <p className="text-sm text-gray-500 mb-4">{description}</p>
+      <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
         {features?.map((feature, index) => (
-          <li key={index} style={{ marginBottom: '0.5rem' }}>
-            {feature}
-          </li>
+          <li key={index}>{feature}</li>
         ))}
       </ul>
     </div>
-  )
+  );
 }

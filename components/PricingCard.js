@@ -1,4 +1,4 @@
-// components/PricingCard.js
+// test components/PricingCard.js
 
 import React from 'react';
 

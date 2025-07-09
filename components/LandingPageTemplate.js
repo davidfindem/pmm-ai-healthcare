@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 
 export default function LandingPageTemplate({ persona }) {
   const {
@@ -15,22 +14,22 @@ export default function LandingPageTemplate({ persona }) {
   } = persona;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div style={{ minHeight: '100vh', background: 'white', fontFamily: 'Inter, system-ui, sans-serif' }}>
       {/* Header */}
-      <header className="border-b border-gray-100 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-sm">PF</span>
+      <header style={{ borderBottom: '1px solid #e5e7eb', padding: '1rem 1.5rem' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ width: '32px', height: '32px', background: '#2563eb', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '14px' }}>
+              PF
             </div>
-            <span className="text-xl font-semibold text-gray-900">Paychex Findem</span>
+            <span style={{ fontSize: '20px', fontWeight: '600', color: '#1e293b' }}>Paychex Findem</span>
           </div>
-          <nav className="hidden md:flex items-center space-x-8 text-sm">
-            <a href="#" className="text-gray-600 hover:text-gray-900">Features</a>
-            <a href="#" className="text-gray-600 hover:text-gray-900">Pricing</a>
-            <a href="#" className="text-gray-600 hover:text-gray-900">FAQ</a>
-            <a href="#" className="text-gray-600 hover:text-gray-900">Log in</a>
-            <button className="bg-black text-white px-4 py-2 rounded-md text-sm font-medium">
+          <nav style={{ display: 'flex', alignItems: 'center', gap: '2rem', fontSize: '14px' }}>
+            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Features</a>
+            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Pricing</a>
+            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>FAQ</a>
+            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Log in</a>
+            <button style={{ background: '#000', color: 'white', padding: '8px 16px', borderRadius: '6px', border: 'none', fontSize: '14px', fontWeight: '500', cursor: 'pointer' }}>
               Sign up
             </button>
           </nav>
@@ -38,117 +37,113 @@ export default function LandingPageTemplate({ persona }) {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 py-16">
+      <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '4rem 1.5rem' }}>
         {/* Hero Section */}
-        <div className="text-center mb-16">
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <h1 
-            className="text-6xl font-bold text-gray-900 mb-6 leading-tight"
-            dangerouslySetInnerHTML={{ __html: headline.replace('<em>', '<span class="text-black">').replace('</em>', '</span>') }}
+            style={{ fontSize: '3.75rem', fontWeight: 'bold', color: '#1e293b', marginBottom: '1.5rem', lineHeight: '1.1' }}
+            dangerouslySetInnerHTML={{ __html: headline.replace('<em>', '<span style="color: #000;">').replace('</em>', '</span>') }}
           />
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p style={{ fontSize: '1.25rem', color: '#64748b', marginBottom: '2rem', maxWidth: '640px', margin: '0 auto 2rem auto', lineHeight: '1.6' }}>
             {subtext}
           </p>
-          <button className="bg-black text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-800 transition-colors">
+          <button style={{ background: '#000', color: 'white', padding: '1rem 2rem', borderRadius: '8px', fontSize: '18px', fontWeight: '600', border: 'none', cursor: 'pointer', marginBottom: '0.75rem' }}>
             {ctaText}
           </button>
-          <p className="text-sm text-gray-500 mt-3">{formNote}</p>
+          <p style={{ fontSize: '14px', color: '#64748b' }}>{formNote}</p>
         </div>
 
         {/* Two Column Layout */}
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start', marginBottom: '6rem' }}>
           {/* Left Column - Candidate Profile */}
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8">
-            <div className="bg-white rounded-xl p-6 shadow-sm">
+          <div style={{ background: 'linear-gradient(135deg, #dbeafe 0%, #c7d2fe 100%)', borderRadius: '16px', padding: '2rem' }}>
+            <div style={{ background: 'white', borderRadius: '12px', padding: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
               {/* Candidate Header */}
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="relative">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">
-                      {exampleCandidate.name.split(' ').map(n => n[0]).join('')}
-                    </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                <div style={{ position: 'relative' }}>
+                  <div style={{ width: '64px', height: '64px', background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 'bold', fontSize: '1.5rem' }}>
+                    {exampleCandidate.name.split(' ').map(n => n[0]).join('')}
                   </div>
-                  <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
-                    <span className="text-white text-xs">✓</span>
+                  <div style={{ position: 'absolute', bottom: '-2px', right: '-2px', width: '24px', height: '24px', background: '#10b981', borderRadius: '50%', border: '2px solid white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ color: 'white', fontSize: '12px' }}>✓</span>
                   </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900">{exampleCandidate.name}</h3>
-                  <p className="text-blue-600 font-medium">{exampleCandidate.role}</p>
-                  <p className="text-gray-500 text-sm">{exampleCandidate.location}</p>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#1e293b', margin: '0 0 4px 0' }}>{exampleCandidate.name}</h3>
+                  <p style={{ color: '#2563eb', fontWeight: '500', margin: '0 0 4px 0' }}>{exampleCandidate.role}</p>
+                  <p style={{ color: '#64748b', fontSize: '14px', margin: 0 }}>{exampleCandidate.location}</p>
                 </div>
-                <div className="flex space-x-2">
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <button style={{ background: '#2563eb', color: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '14px', fontWeight: '500', border: 'none', cursor: 'pointer' }}>
                     Email
                   </button>
-                  <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors">
+                  <button style={{ border: '1px solid #d1d5db', color: '#374151', background: 'white', padding: '8px 16px', borderRadius: '8px', fontSize: '14px', fontWeight: '500', cursor: 'pointer' }}>
                     Call
                   </button>
                 </div>
               </div>
 
               {/* Bio Section */}
-              <div className="mb-6">
-                <h4 className="text-sm font-semibold text-gray-900 mb-2">Bio</h4>
-                <p className="text-gray-700 text-sm leading-relaxed">{exampleCandidate.bio}</p>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <h4 style={{ fontSize: '14px', fontWeight: '600', color: '#1e293b', marginBottom: '8px' }}>Bio</h4>
+                <p style={{ color: '#374151', fontSize: '14px', lineHeight: '1.5' }}>{exampleCandidate.bio}</p>
               </div>
 
               {/* Work Experience */}
               <div>
-                <h4 className="text-sm font-semibold text-gray-900 mb-3">Work Experience</h4>
-                <div className="space-y-3">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <span className="text-green-600 text-sm">🏥</span>
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-gray-900">{exampleCandidate.role}</p>
-                      <p className="text-xs text-gray-500">Previous Healthcare Facility • 2019 - 2024</p>
-                      <p className="text-xs text-gray-600 mt-1">Specialized in patient care with exceptional performance metrics and team collaboration.</p>
-                    </div>
+                <h4 style={{ fontSize: '14px', fontWeight: '600', color: '#1e293b', marginBottom: '12px' }}>Work Experience</h4>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                  <div style={{ width: '32px', height: '32px', background: '#dcfce7', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <span style={{ color: '#16a34a', fontSize: '14px' }}>🏥</span>
+                  </div>
+                  <div>
+                    <p style={{ fontSize: '14px', fontWeight: '500', color: '#1e293b', margin: '0 0 4px 0' }}>{exampleCandidate.role}</p>
+                    <p style={{ fontSize: '12px', color: '#64748b', margin: '0 0 4px 0' }}>Previous Healthcare Facility • 2019 - 2024</p>
+                    <p style={{ fontSize: '12px', color: '#64748b', margin: 0 }}>Specialized in patient care with exceptional performance metrics and team collaboration.</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Stats Section */}
-            <div className="mt-6 text-center">
-              <p className="text-2xl font-bold text-gray-900 mb-1">50 CANDIDATES</p>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Reach the <span className="italic">right talent</span>
+            <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
+              <p style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#1e293b', marginBottom: '4px' }}>50 CANDIDATES</p>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#1e293b', marginBottom: '8px' }}>
+                Reach the <span style={{ fontStyle: 'italic' }}>right talent</span>
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p style={{ color: '#64748b', fontSize: '14px' }}>
                 Reach out directly to high-quality candidates and start meaningful conversations
               </p>
             </div>
           </div>
 
           {/* Right Column - Contact Form */}
-          <div className="space-y-6">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             {/* Contact Form */}
-            <form className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+            <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <input 
-                  className="border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                  style={{ border: '1px solid #d1d5db', borderRadius: '8px', padding: '12px 16px', fontSize: '14px', outline: 'none' }} 
                   placeholder="First Name" 
                 />
                 <input 
-                  className="border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                  style={{ border: '1px solid #d1d5db', borderRadius: '8px', padding: '12px 16px', fontSize: '14px', outline: 'none' }} 
                   placeholder="Last Name" 
                 />
               </div>
               <input 
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                style={{ border: '1px solid #d1d5db', borderRadius: '8px', padding: '12px 16px', fontSize: '14px', outline: 'none' }} 
                 placeholder="Email" 
               />
               <input 
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                style={{ border: '1px solid #d1d5db', borderRadius: '8px', padding: '12px 16px', fontSize: '14px', outline: 'none' }} 
                 placeholder="Phone" 
               />
               <input 
-                className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                style={{ border: '1px solid #d1d5db', borderRadius: '8px', padding: '12px 16px', fontSize: '14px', outline: 'none' }} 
                 placeholder={persona.companyPlaceholder} 
               />
-              <select className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700">
+              <select style={{ border: '1px solid #d1d5db', borderRadius: '8px', padding: '12px 16px', fontSize: '14px', outline: 'none', color: '#374151' }}>
                 <option>{selectPlaceholder}</option>
                 {selectOptions.map((opt) => (
                   <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -156,76 +151,60 @@ export default function LandingPageTemplate({ persona }) {
               </select>
               <button
                 type="submit"
-                className="w-full bg-blue-600 text-white py-3 rounded-lg text-base font-semibold hover:bg-blue-700 transition-colors"
+                style={{ background: '#2563eb', color: 'white', padding: '12px', borderRadius: '8px', fontSize: '16px', fontWeight: '600', border: 'none', cursor: 'pointer' }}
               >
                 {ctaText}
               </button>
             </form>
 
             {/* Message Interface Mockup */}
-            <div className="bg-purple-50 rounded-xl p-6">
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
-                  <div className="flex-1 bg-white rounded-lg p-3 shadow-sm">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">Interested Reply</span>
-                      <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+            <div style={{ background: '#faf5ff', borderRadius: '12px', padding: '1.5rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {[
+                  { status: 'Interested Reply', color: '#10b981' },
+                  { status: 'Message Sent', color: '#2563eb' },
+                  { status: 'Message', color: '#2563eb', hasButton: true },
+                  { status: 'Message', color: '#2563eb', hasButton: true }
+                ].map((item, index) => (
+                  <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ width: '32px', height: '32px', background: '#d1d5db', borderRadius: '50%' }}></div>
+                    <div style={{ flex: 1, background: 'white', borderRadius: '8px', padding: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <span style={{ fontSize: '14px', color: '#64748b' }}>{item.status}</span>
+                        {item.hasButton ? (
+                          <span style={{ background: '#2563eb', color: 'white', fontSize: '12px', padding: '4px 8px', borderRadius: '4px' }}>Message</span>
+                        ) : (
+                          <span style={{ width: '8px', height: '8px', background: item.color, borderRadius: '50%' }}></span>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
-                  <div className="flex-1 bg-white rounded-lg p-3 shadow-sm">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">Message Sent</span>
-                      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
-                  <div className="flex-1 bg-white rounded-lg p-3 shadow-sm">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">Message</span>
-                      <span className="bg-blue-600 text-white text-xs px-2 py-1 rounded">Message</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
-                  <div className="flex-1 bg-white rounded-lg p-3 shadow-sm">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">Message</span>
-                      <span className="bg-blue-600 text-white text-xs px-2 py-1 rounded">Message</span>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
             {/* Integration Section */}
-            <div className="bg-blue-50 rounded-xl p-6">
-              <h4 className="text-lg font-semibold text-gray-900 mb-3">EMAIL INTEGRATION</h4>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Keep talent <span className="italic">engaged</span>
+            <div style={{ background: '#eff6ff', borderRadius: '12px', padding: '1.5rem' }}>
+              <h4 style={{ fontSize: '18px', fontWeight: '600', color: '#1e293b', marginBottom: '12px' }}>EMAIL INTEGRATION</h4>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#1e293b', marginBottom: '12px' }}>
+                Keep talent <span style={{ fontStyle: 'italic' }}>engaged</span>
               </h3>
-              <p className="text-gray-600 text-sm mb-4">
+              <p style={{ color: '#64748b', fontSize: '14px', marginBottom: '1rem' }}>
                 Engage and track candidates directly from your inbox—no need to switch platforms
               </p>
-              <div className="space-y-2">
-                <div className="bg-white rounded-lg p-3 border border-gray-200 cursor-pointer hover:bg-gray-50 transition-colors">
-                  <div className="flex items-center space-x-3">
-                    <span className="text-blue-600">📧</span>
-                    <span className="text-sm font-medium">Sign in with Google</span>
-                    <span className="ml-auto">→</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <div style={{ background: 'white', borderRadius: '8px', padding: '12px', border: '1px solid #d1d5db', cursor: 'pointer' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <span style={{ color: '#2563eb' }}>📧</span>
+                    <span style={{ fontSize: '14px', fontWeight: '500' }}>Sign in with Google</span>
+                    <span style={{ marginLeft: 'auto' }}>→</span>
                   </div>
                 </div>
-                <div className="bg-white rounded-lg p-3 border border-gray-200 cursor-pointer hover:bg-gray-50 transition-colors">
-                  <div className="flex items-center space-x-3">
-                    <span className="text-blue-600">📨</span>
-                    <span className="text-sm font-medium">Sign in with Microsoft</span>
-                    <span className="ml-auto">→</span>
+                <div style={{ background: 'white', borderRadius: '8px', padding: '12px', border: '1px solid #d1d5db', cursor: 'pointer' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <span style={{ color: '#2563eb' }}>📨</span>
+                    <span style={{ fontSize: '14px', fontWeight: '500' }}>Sign in with Microsoft</span>
+                    <span style={{ marginLeft: 'auto' }}>→</span>
                   </div>
                 </div>
               </div>
@@ -234,24 +213,24 @@ export default function LandingPageTemplate({ persona }) {
         </div>
 
         {/* Pricing Section */}
-        <section className="mt-24">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">{pricingTitle}</h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <section style={{ marginTop: '6rem' }}>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', textAlign: 'center', color: '#1e293b', marginBottom: '3rem' }}>{pricingTitle}</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', maxWidth: '1024px', margin: '0 auto' }}>
             {pricing.map((tier) => (
               <div
                 key={tier.title}
-                className="border border-gray-200 rounded-2xl p-8 bg-white hover:shadow-lg transition-shadow"
+                style={{ border: '1px solid #d1d5db', borderRadius: '16px', padding: '2rem', background: 'white', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}
               >
-                <h3 className="text-2xl font-bold mb-3 text-gray-900">{tier.title}</h3>
-                <p className="text-3xl font-bold text-blue-600 mb-2">{tier.price}</p>
-                <p className="text-gray-600 mb-6">{tier.description}</p>
-                <ul className="space-y-3 text-gray-700">
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '12px', color: '#1e293b' }}>{tier.title}</h3>
+                <p style={{ fontSize: '1.875rem', fontWeight: 'bold', color: '#2563eb', marginBottom: '8px' }}>{tier.price}</p>
+                <p style={{ color: '#64748b', marginBottom: '1.5rem' }}>{tier.description}</p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                   {tier.features.map((feature, index) => (
-                    <li key={index} className="flex items-center space-x-3">
-                      <span className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <span className="text-green-600 text-xs">✓</span>
+                    <li key={index} style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+                      <span style={{ width: '20px', height: '20px', background: '#dcfce7', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <span style={{ color: '#16a34a', fontSize: '12px' }}>✓</span>
                       </span>
-                      <span className="text-sm">{feature}</span>
+                      <span style={{ fontSize: '14px' }}>{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -261,34 +240,34 @@ export default function LandingPageTemplate({ persona }) {
         </section>
 
         {/* Bottom CTA */}
-        <section className="mt-24 bg-black rounded-2xl p-12 text-center text-white">
-          <h2 className="text-4xl font-bold mb-4">
-            Make your next <span className="italic">great hire</span> today.
+        <section style={{ marginTop: '6rem', background: '#000', borderRadius: '16px', padding: '3rem', textAlign: 'center', color: 'white' }}>
+          <h2 style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+            Make your next <span style={{ fontStyle: 'italic' }}>great hire</span> today.
           </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p style={{ fontSize: '1.25rem', color: '#d1d5db', marginBottom: '2rem', maxWidth: '640px', margin: '0 auto 2rem auto' }}>
             No subscriptions, no hassle—just a simple way to connect with top talent. Get started now and find the right candidate.
           </p>
-          <button className="bg-white text-black px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
+          <button style={{ background: 'white', color: '#000', padding: '1rem 2rem', borderRadius: '8px', fontSize: '18px', fontWeight: '600', border: 'none', cursor: 'pointer', marginBottom: '1rem' }}>
             {ctaText}
           </button>
-          <p className="text-gray-400 text-sm mt-4">99% one-time</p>
+          <p style={{ color: '#9ca3af', fontSize: '14px' }}>99% one-time</p>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-gray-100 py-8 mt-16">
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-center space-x-8">
-          <div className="flex items-center space-x-2">
-            <span className="font-bold">PAYCHEX</span>
-            <span className="text-gray-400">🤝</span>
-            <span className="font-bold">findem</span>
+      <footer style={{ borderTop: '1px solid #e5e7eb', padding: '2rem 0', marginTop: '4rem' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontWeight: 'bold' }}>PAYCHEX</span>
+            <span style={{ color: '#9ca3af' }}>🤝</span>
+            <span style={{ fontWeight: 'bold' }}>findem</span>
           </div>
         </div>
-        <div className="text-center text-gray-500 text-sm mt-4">
-          <p>© 2025, Findem. All Rights Reserved.</p>
-          <div className="flex justify-center space-x-4 mt-2">
-            <a href="#" className="hover:text-gray-700">Terms of Service</a>
-            <a href="#" className="hover:text-gray-700">Privacy Policy</a>
+        <div style={{ textAlign: 'center', color: '#64748b', fontSize: '14px', marginTop: '1rem' }}>
+          <p style={{ marginBottom: '1rem' }}>© 2025, Findem. All Rights Reserved.</p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem' }}>
+            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Terms of Service</a>
+            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Privacy Policy</a>
           </div>
         </div>
       </footer>
